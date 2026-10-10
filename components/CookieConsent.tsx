@@ -65,7 +65,7 @@ export default function CookieConsent() {
           </div>
           <p id="consent-d">
             We&rsquo;d like to use Google Analytics cookies to understand how people find and use this site. Nothing
-            loads unless you accept.
+            loads unless you accept. <a href="/privacy/">Privacy policy</a>
           </p>
         </div>
         <div className="consent-b">
@@ -81,11 +81,11 @@ export default function CookieConsent() {
   );
 }
 
-/** Footer link that reopens the banner. */
-export function CookieSettingsLink() {
+/** Link-style button that reopens the banner. */
+export function CookieSettingsLink({ label = 'Cookie settings' }: { label?: string }) {
   return (
     <button type="button" className="footer-link" onClick={() => window.dispatchEvent(new Event(OPEN_CONSENT_EVENT))}>
-      Cookie settings
+      {label}
     </button>
   );
 }
