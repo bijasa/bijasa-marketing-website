@@ -1,0 +1,11 @@
+node_modules
+.next
+.env
+.env.local
+*.tsbuildinfo
+next-env.d.ts
+.netlify
+/out
+
+# Internal brand/design source (kept local, not published)
+/design_handoff_bijasa_website/
