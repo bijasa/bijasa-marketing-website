@@ -621,9 +621,6 @@ a:hover {
   html {
     scroll-behavior: auto;
   }
-  .hero {
-    height: 100vh;
-  }
 }
 
 .form-status a,
@@ -662,4 +659,25 @@ a:hover {
 .btn-ghost:focus-visible {
   background: var(--row-hover);
   color: var(--bone);
+}
+
+/* ---------- Small screens only (desktop untouched) ---------- */
+/* Domains collapse to one column here: the sticky intro would sit on top of the rows. */
+@media (max-width: 780px) {
+  .domains-intro {
+    position: static;
+  }
+}
+/* Contact: keep the ghost b out from behind the form fields on single-column layouts. */
+@media (max-width: 860px) {
+  .ghost-b {
+    top: auto;
+    bottom: -6vw;
+    right: -18vw;
+    height: min(78vw, 520px);
+    transform: none;
+  }
+  .contact .footer {
+    position: relative;
+  }
 }

@@ -17,6 +17,9 @@ const BASALT = [24, 19, 14];
  * All scroll-linked motion for the page (hero, nav, thread, reveals, domain focus).
  * One passive scroll/resize listener writes styles directly — no React re-renders.
  * Port of `upd()` from the design handoff prototype.
+ *
+ * With prefers-reduced-motion the scroll-driven hero still plays (the visitor drives it),
+ * but the automatic intro draw, scroll reveals and domain drift are skipped.
  */
 export default function ScrollEffects() {
   useEffect(() => {
@@ -52,11 +55,11 @@ export default function ScrollEffects() {
 
     const upd = () => {
       const still = reduce.matches;
-      hero.style.height = still ? '100vh' : HERO_LENGTH_VH + 'vh';
+      hero.style.height = HERO_LENGTH_VH + 'vh';
       const vw = window.innerWidth;
       const vh = window.innerHeight;
       const tot = hero.offsetHeight - vh;
-      const p = still || tot <= 0 ? 1 : cl(-hero.getBoundingClientRect().top / tot);
+      const p = tot <= 0 ? 1 : cl(-hero.getBoundingClientRect().top / tot);
 
       const t1 = ease(cl((p - 0.04) / 0.46));
       const t2 = cl((p - 0.34) / 0.34);
@@ -105,7 +108,7 @@ export default function ScrollEffects() {
       tag.style.transform = `translateY(${(1 - t4) * 16}px)`;
       cue.style.opacity = String(1 - cl(p / 0.03));
 
-      const done = still ? hero.getBoundingClientRect().bottom <= 68 : p > 0.995;
+      const done = p > 0.995;
       nav.style.background = done ? '#18130e' : 'transparent';
       navb.style.opacity = done ? '1' : '0';
       links.style.color = done || t3 > 0.5 ? '#f4f0e7' : '#18130e';
