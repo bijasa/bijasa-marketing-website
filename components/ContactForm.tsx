@@ -2,6 +2,7 @@
 
 import { useRef, useState, type FormEvent } from 'react';
 import { LIMITS, normalize, validate, type ContactErrors, type ContactInput } from '@/lib/contact';
+import { track } from '@/lib/analytics';
 import { CONTACT_EMAIL } from '@/lib/content';
 
 const FIELDS: { key: keyof ContactInput; label: string; optional?: boolean; full?: boolean }[] = [
@@ -11,7 +12,11 @@ const FIELDS: { key: keyof ContactInput; label: string; optional?: boolean; full
   { key: 'message', label: 'Project', full: true },
 ];
 
-type Draft = { subject: string; body: string; links: { label: string; href: string; external: boolean }[] };
+type Draft = {
+  subject: string;
+  body: string;
+  links: { label: string; method: string; href: string; external: boolean }[];
+};
 
 function compose(c: ContactInput): Draft {
   const subject = `Project enquiry from ${c.name}${c.company ? ` (${c.company})` : ''}`;
@@ -25,13 +30,14 @@ function compose(c: ContactInput): Draft {
     subject,
     body,
     links: [
-      { label: 'Gmail', href: `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${su}&body=${bo}`, external: true },
+      { label: 'Gmail', method: 'gmail', href: `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${su}&body=${bo}`, external: true },
       {
         label: 'Outlook',
+        method: 'outlook',
         href: `https://outlook.live.com/mail/0/deeplink/compose?to=${to}&subject=${su}&body=${bo}`,
         external: true,
       },
-      { label: 'Default email app', href: `mailto:${CONTACT_EMAIL}?subject=${su}&body=${bo}`, external: false },
+      { label: 'Default email app', method: 'mail_app', href: `mailto:${CONTACT_EMAIL}?subject=${su}&body=${bo}`, external: false },
     ],
   };
 }
@@ -58,6 +64,7 @@ export default function ContactForm() {
       return;
     }
     setDraft(compose(input));
+    track('contact_form_ready');
     setCopied(false);
     requestAnimationFrame(() => choicesRef.current?.querySelector<HTMLElement>('a')?.focus());
   }
@@ -67,6 +74,7 @@ export default function ContactForm() {
     try {
       await navigator.clipboard.writeText(`To: ${CONTACT_EMAIL}\nSubject: ${draft.subject}\n\n${draft.body}`);
       setCopied(true);
+      track('generate_lead', { method: 'copy' });
     } catch {
       setCopied(false);
     }
@@ -125,6 +133,8 @@ export default function ContactForm() {
                   key={l.label}
                   href={l.href}
                   className="btn"
+                  data-track="generate_lead"
+                  data-track-method={l.method}
                   {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 >
                   {l.label}

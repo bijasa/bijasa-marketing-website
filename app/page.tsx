@@ -1,4 +1,5 @@
 import ContactForm from '@/components/ContactForm';
+import { CookieSettingsLink } from '@/components/CookieConsent';
 import { BSymbol, HeroMark } from '@/components/Logo';
 import ScrollEffects from '@/components/ScrollEffects';
 import { CONTACT_EMAIL, caps, domains, teams } from '@/lib/content';
@@ -11,10 +12,10 @@ export default function Home() {
           <BSymbol ink="#f4f0e7" />
         </a>
         <div id="bj-links" className="nav-links">
-          <a href="#domains">Domains</a>
-          <a href="#capabilities">Capabilities</a>
-          <a href="#expertise">Expertise</a>
-          <a href="#contact">Contact</a>
+          <a href="#domains" data-track="nav_click" data-track-section="domains">Domains</a>
+          <a href="#capabilities" data-track="nav_click" data-track-section="capabilities">Capabilities</a>
+          <a href="#expertise" data-track="nav_click" data-track-section="expertise">Expertise</a>
+          <a href="#contact" data-track="nav_click" data-track-section="contact">Contact</a>
         </div>
       </nav>
 
@@ -133,13 +134,20 @@ export default function Home() {
                 <ContactForm />
                 <aside className="contact-aside">
                   <p>Prefer email? Write to us directly and we&rsquo;ll reply within two working days.</p>
-                  <a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Hello Bijasa')}`} className="btn">
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Hello Bijasa')}`}
+                    className="btn"
+                    data-track="generate_lead"
+                    data-track-method="email_button"
+                  >
                     {CONTACT_EMAIL}
                   </a>
                 </aside>
               </div>
               <footer className="footer">
-                <span>© 2026 Bijasa</span>
+                <span>
+                  © 2026 Bijasa · <CookieSettingsLink />
+                </span>
                 <strong>Deep roots. Long reach.</strong>
               </footer>
             </div>
