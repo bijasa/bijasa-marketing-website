@@ -11,31 +11,41 @@ const FIELDS: { key: keyof ContactInput; label: string; optional?: boolean; full
   { key: 'message', label: 'Project', full: true },
 ];
 
-function compose(c: ContactInput) {
+type Draft = { subject: string; body: string; links: { label: string; href: string; external: boolean }[] };
+
+function compose(c: ContactInput): Draft {
   const subject = `Project enquiry from ${c.name}${c.company ? ` (${c.company})` : ''}`;
-  const body = [
-    c.message,
-    '',
-    '—',
-    `Name: ${c.name}`,
-    `Email: ${c.email}`,
-    c.company ? `Company: ${c.company}` : null,
-  ]
+  const body = [c.message, '', '—', `Name: ${c.name}`, `Email: ${c.email}`, c.company ? `Company: ${c.company}` : null]
     .filter((l) => l !== null)
     .join('\n');
-  const href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  return { subject, body, href };
+  const to = encodeURIComponent(CONTACT_EMAIL);
+  const su = encodeURIComponent(subject);
+  const bo = encodeURIComponent(body);
+  return {
+    subject,
+    body,
+    links: [
+      { label: 'Gmail', href: `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${su}&body=${bo}`, external: true },
+      {
+        label: 'Outlook',
+        href: `https://outlook.live.com/mail/0/deeplink/compose?to=${to}&subject=${su}&body=${bo}`,
+        external: true,
+      },
+      { label: 'Default email app', href: `mailto:${CONTACT_EMAIL}?subject=${su}&body=${bo}`, external: false },
+    ],
+  };
 }
 
 /**
- * Validates the enquiry, then opens the visitor's default email app with a
- * pre-filled message to CONTACT_EMAIL. No backend involved.
+ * No backend: validates the enquiry, then lets the visitor send it from the email
+ * service they use (Gmail, Outlook, or their default app), pre-filled to CONTACT_EMAIL.
  */
 export default function ContactForm() {
   const [errors, setErrors] = useState<ContactErrors>({});
-  const [draft, setDraft] = useState<ReturnType<typeof compose> | null>(null);
+  const [draft, setDraft] = useState<Draft | null>(null);
   const [copied, setCopied] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
+  const choicesRef = useRef<HTMLDivElement>(null);
 
   function onSubmit(ev: FormEvent<HTMLFormElement>) {
     ev.preventDefault();
@@ -47,10 +57,9 @@ export default function ContactForm() {
       if (first) formRef.current?.querySelector<HTMLElement>(`[name="${first.key}"]`)?.focus();
       return;
     }
-    const d = compose(input);
-    setDraft(d);
+    setDraft(compose(input));
     setCopied(false);
-    window.location.href = d.href;
+    requestAnimationFrame(() => choicesRef.current?.querySelector<HTMLElement>('a')?.focus());
   }
 
   async function copy() {
@@ -64,7 +73,14 @@ export default function ContactForm() {
   }
 
   return (
-    <form ref={formRef} className="form" onSubmit={onSubmit} noValidate aria-label="Contact Bijasa">
+    <form
+      ref={formRef}
+      className="form"
+      onSubmit={onSubmit}
+      onChange={() => draft && setDraft(null)}
+      noValidate
+      aria-label="Contact Bijasa"
+    >
       {FIELDS.map((f) => {
         const id = `cf-${f.key}`;
         const err = errors[f.key];
@@ -100,22 +116,36 @@ export default function ContactForm() {
       })}
 
       <div className="form-foot">
-        <button type="submit" className="btn">
-          Send message
-        </button>
-        <p className="form-status" role="status" aria-live="polite">
-          {draft ? (
-            <>
-              Your email app should open with the message ready — just hit send. Nothing opened?{' '}
-              <button type="button" className="link-btn" onClick={copy}>
-                {copied ? 'Copied ✓' : 'Copy the message'}
-              </button>{' '}
-              and email it to <a href={draft.href}>{CONTACT_EMAIL}</a>.
-            </>
-          ) : (
-            'Opens your email app with everything filled in.'
-          )}
-        </p>
+        {draft ? (
+          <div ref={choicesRef} className="send-with" role="group" aria-label="Send your message with">
+            <div className="send-with-l">Your message is ready. Send it with:</div>
+            <div className="send-with-opts">
+              {draft.links.map((l) => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  className="btn"
+                  {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  {l.label}
+                </a>
+              ))}
+              <button type="button" className="btn btn-ghost" onClick={copy}>
+                {copied ? 'Copied ✓' : 'Copy message'}
+              </button>
+            </div>
+            <p className="form-status">
+              It opens a draft addressed to {CONTACT_EMAIL} with everything filled in. Just press send.
+            </p>
+          </div>
+        ) : (
+          <>
+            <button type="submit" className="btn">
+              Send message
+            </button>
+            <p className="form-status">You&rsquo;ll pick Gmail, Outlook or your email app next.</p>
+          </>
+        )}
       </div>
     </form>
   );

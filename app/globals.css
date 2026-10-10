@@ -630,3 +630,36 @@ a:hover {
 .contact-aside a:not(.btn) {
   color: var(--copper-light);
 }
+
+.send-with {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding-top: 20px;
+  border-top: 2px solid var(--copper);
+}
+.send-with-l {
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.send-with-opts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.send-with-opts .btn {
+  padding: 14px 22px;
+  font-size: 17px;
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--bone);
+  box-shadow: inset 0 0 0 2px var(--rule);
+}
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  background: var(--row-hover);
+  color: var(--bone);
+}

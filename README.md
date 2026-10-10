@@ -1,36 +1,78 @@
-# bijasa.com
+<div align="center">
 
-Marketing site for Bijasa, built with Next.js (App Router).
+<a href="https://bijasa.com"><img src="public/icon-192.png" alt="Bijasa" width="88" height="88"></a>
 
-© 2026 Bijasa. All rights reserved. See [LICENSE](LICENSE).
+# Bijasa
 
-## Run
+**Deep roots. Long reach.**
+
+The website of Bijasa, a software company. Live at **[bijasa.com](https://bijasa.com)**.
+
+[![Deploy](https://github.com/bijasa/bijasa-marketing-website/actions/workflows/pages.yml/badge.svg)](https://github.com/bijasa/bijasa-marketing-website/actions/workflows/pages.yml)
+
+</div>
+
+---
+
+## Overview
+
+A single-page site. Its main feature is a scroll-driven hero: the lowercase **b** draws itself, then grows into the full *bijasa* wordmark as you scroll. Below it are sections on our approach, the industries we work in, our capabilities, our team and how to contact us.
+
+- **Fast and static.** Every page is pre-built HTML, with no server at runtime.
+- **Accessible.** Uses semantic markup and keyboard-friendly forms, and respects `prefers-reduced-motion`.
+- **Responsive.** Fluid type and layout from 390px phones to wide desktops.
+
+## Tech stack
+
+| | |
+|---|---|
+| Framework | [Next.js](https://nextjs.org) (App Router, static export) |
+| Language | TypeScript, React |
+| Styling | Plain CSS with design tokens, Archivo typeface |
+| Hosting | GitHub Pages, deployed by GitHub Actions |
+
+## Getting started
+
+Requires **Node.js 20+**.
 
 ```bash
 npm install
-npm run dev                  # http://localhost:3000
-npm run build                # static site in out/
+npm run dev      # http://localhost:3000
+npm run build    # static site written to ./out
 ```
 
-## Structure
+## Project structure
 
-- `app/page.tsx` — all sections (hero, approach, domains, capabilities, expertise, contact)
-- `app/globals.css` — design tokens + styles
-- `components/ScrollEffects.tsx` — every scroll-linked effect (port of the prototype's `upd()`); respects `prefers-reduced-motion`
-- `components/Logo.tsx` — b symbol + hero wordmark SVG
-- `components/ContactForm.tsx` — contact form: validates, then opens the visitor's email app pre-filled
-- `lib/content.ts` — copy for domains / capabilities / teams, and the contact email
+```
+app/
+  layout.tsx          Page shell, metadata, fonts
+  page.tsx            All page sections
+  globals.css         Design tokens and styles
+components/
+  ScrollEffects.tsx   Scroll-linked animation (hero, reveals, thread)
+  ContactForm.tsx     Contact form
+  Logo.tsx            Bijasa symbol and wordmark
+lib/
+  content.ts          Site copy (domains, capabilities, teams, contact email)
+  contact.ts          Form validation
+public/               Icons and static assets
+```
+
+Most text changes only need an edit to `lib/content.ts`.
 
 ## Contact form
 
-No backend. On **Send message** the form validates, then opens a `mailto:hello@bijasa.com` link with subject and body (message, name, email, company) pre-filled in the visitor's default email app. If no email app opens, the form offers a "Copy the message" fallback. The address lives in `lib/content.ts` (`CONTACT_EMAIL`).
+The form doesn't need a server. It checks what the visitor typed, then opens a ready-to-send email to the Bijasa inbox in **Gmail**, **Outlook** or the visitor's own email app. Visitors can also copy the message to send it themselves.
 
-## Deploy
+## Deployment
 
-GitHub Pages, via `.github/workflows/pages.yml`: every push to `main` builds a static export (`next build` with `output: 'export'`, written to `out/`) and publishes it. Custom domain `bijasa.com` comes from `public/CNAME`.
+Every push to `main` builds the site and publishes it to GitHub Pages automatically ([workflow](.github/workflows/pages.yml)).
 
-GoDaddy DNS for bijasa.com:
+## Contact
 
-- `A` records on `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-- `CNAME` `www` → `bijasa.github.io`
-- Leave the Zoho `MX` / `TXT` mail records untouched.
+**[hello@bijasa.com](mailto:hello@bijasa.com)**
+
+## License
+
+© 2026 Bijasa. All rights reserved.
+The source code, content, name and logo are not licensed for reuse. See [LICENSE](LICENSE).
