@@ -18,7 +18,7 @@ export default function Home() {
           <BSymbol ink="#f4f0e7" />
         </a>
         <div id="bj-links" className="nav-links">
-          <a href="/tools/" data-track="nav_click" data-track-section="tools">Free tools</a>
+          <a href="#tools" data-track="nav_click" data-track-section="tools">Free tools</a>
           <a href="#domains" data-track="nav_click" data-track-section="domains">Domains</a>
           <a href="#capabilities" data-track="nav_click" data-track-section="capabilities">Capabilities</a>
           <a href="#expertise" data-track="nav_click" data-track-section="expertise">Expertise</a>
@@ -128,6 +128,34 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+            </div>
+          </section>
+
+          <section id="tools" className="sec on-dark caps tools" aria-labelledby="tools-heading">
+            <div className="wrap">
+              <div data-rv className="eyebrow">Free tools · Built by Bijasa</div>
+              <h2 data-rv id="tools-heading" className="h2">Useful by design.</h2>
+              <p data-rv className="cap-d tools-intro">
+                Free tools for everyday work and practice. Built by Bijasa.
+              </p>
+              <a data-rv className="cap tool-link" href="https://invoicing.bijasa.com/">
+                <span className="cap-n">01</span>
+                <h3 className="cap-t">Invoicing Platform</h3>
+                <span className="cap-d">
+                  Create invoices, quotations and polished PDFs. Free to use, with your records stored on your device.
+                  <span className="tool-action">Open invoicing ↗</span>
+                </span>
+              </a>
+              <a data-rv className="cap tool-link" href="https://typing.bijasa.com/">
+                <span className="cap-n">02</span>
+                <h3 className="cap-t">Typing Practice</h3>
+                <span className="cap-d">
+                  Practise in English, Hindi and Marathi, with exam mocks, lessons and detailed feedback.
+                  <span className="tool-action">Open typing practice ↗</span>
+                </span>
+              </a>
+              <div className="close-rule" />
+              <p className="tools-more"><a href="/tools/">Explore the tools and their guides →</a></p>
             </div>
           </section>
 

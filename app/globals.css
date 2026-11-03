@@ -893,3 +893,38 @@ a:hover {
   flex-wrap: wrap;
   font-size: 14px;
 }
+
+/* ---------- Free tools: the existing capability-row treatment ---------- */
+.tools {
+  scroll-margin-top: 68px;
+}
+.tools-intro {
+  margin: -16px 0 40px;
+}
+.tool-link {
+  color: inherit;
+  text-decoration: none;
+}
+.tool-link:hover {
+  color: inherit;
+}
+.tool-link .cap-t {
+  margin: 0;
+}
+.tool-action {
+  display: block;
+  margin-top: 14px;
+  color: var(--bone);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.tools-more {
+  margin: 28px 0 0;
+}
+.tools-more a {
+  color: var(--bone);
+  font-size: 15px;
+  font-weight: 700;
+  text-underline-offset: 4px;
+}
