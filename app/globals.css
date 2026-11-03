@@ -897,9 +897,14 @@ a:hover {
 /* ---------- Free tools: the existing capability-row treatment ---------- */
 .tools {
   scroll-margin-top: 68px;
+  padding-top: clamp(72px, 6vw, 96px);
+}
+.tools .h2 {
+  margin-bottom: 32px;
 }
 .tools-intro {
-  margin: -16px 0 40px;
+  max-width: 60ch;
+  margin: 0 0 32px;
 }
 .tool-link {
   color: inherit;
