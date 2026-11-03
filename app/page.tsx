@@ -152,7 +152,7 @@ export default function Home() {
               </div>
               <footer className="footer">
                 <span>
-                  © 2026 Bijasa · <a href="/privacy/" className="footer-link">Privacy</a> · <CookieSettingsLink />
+                  © 2026 Bijasa · <a href="/services/" className="footer-link">Services</a> · <a href="/tools/" className="footer-link">Free tools</a> · <a href="/privacy/" className="footer-link">Privacy</a> · <CookieSettingsLink />
                 </span>
                 <strong>Deep roots. Long reach.</strong>
               </footer>
