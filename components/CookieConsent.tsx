@@ -1,9 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import {
   OPEN_CONSENT_EVENT,
-  clearAnalyticsCookies,
+  disableAnalytics,
+  refreshConsent,
+  trackPage,
+  trackLink,
   loadAnalytics,
   readConsent,
   saveConsent,
@@ -17,6 +21,7 @@ import {
  */
 export default function CookieConsent() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const c = readConsent();
@@ -28,7 +33,11 @@ export default function CookieConsent() {
 
     const onClick = (e: MouseEvent) => {
       const el = (e.target as Element | null)?.closest<HTMLElement>('[data-track]');
-      if (!el) return;
+      if (!el) {
+        const link = (e.target as Element | null)?.closest<HTMLAnchorElement>('a[href]');
+        if (link) trackLink(link.href);
+        return;
+      }
       const params: Record<string, string> = {};
       for (const [k, v] of Object.entries(el.dataset)) {
         if (k.startsWith('track') && k !== 'track' && v) params[k.slice(5).toLowerCase()] = v;
@@ -36,23 +45,29 @@ export default function CookieConsent() {
       track(el.dataset.track!, params);
     };
     document.addEventListener('click', onClick, true);
+    const sync = (event: StorageEvent) => {
+      if (event.key !== 'bj-consent' && event.key !== null) return;
+      const choice = refreshConsent();
+      if (choice === 'granted') loadAnalytics();
+      else disableAnalytics();
+      setOpen(choice === null);
+    };
+    window.addEventListener('storage', sync);
 
     return () => {
       window.removeEventListener(OPEN_CONSENT_EVENT, reopen);
       document.removeEventListener('click', onClick, true);
+      window.removeEventListener('storage', sync);
     };
   }, []);
 
+  useEffect(() => { trackPage(pathname); }, [pathname]);
+
   function choose(v: 'granted' | 'denied') {
-    const before = readConsent();
     saveConsent(v);
     setOpen(false);
     if (v === 'granted') loadAnalytics();
-    else if (before === 'granted') {
-      // GA can't be unloaded from a running page: clear its cookies and reload without it.
-      clearAnalyticsCookies();
-      location.reload();
-    }
+    else disableAnalytics();
   }
 
   if (!open) return null;

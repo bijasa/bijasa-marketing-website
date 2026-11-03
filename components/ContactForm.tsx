@@ -52,6 +52,7 @@ export default function ContactForm() {
   const [copied, setCopied] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const choicesRef = useRef<HTMLDivElement>(null);
+  const startedRef = useRef(false);
 
   function onSubmit(ev: FormEvent<HTMLFormElement>) {
     ev.preventDefault();
@@ -86,6 +87,12 @@ export default function ContactForm() {
       className="form"
       onSubmit={onSubmit}
       onChange={() => draft && setDraft(null)}
+      onFocus={() => {
+        if (!startedRef.current) {
+          startedRef.current = true;
+          track('contact_start');
+        }
+      }}
       noValidate
       aria-label="Contact Bijasa"
     >

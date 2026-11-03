@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/privacy/' },
 };
 
-const UPDATED = '10 October 2026';
+const UPDATED = '3 November 2026';
 
 export default function Privacy() {
   const mail = <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>;
@@ -55,9 +55,7 @@ export default function Privacy() {
             <p>
               If you click <strong>Accept</strong> on our cookie banner, we use Google Analytics 4 to understand how
               people find and use the site. It records things like the pages you view, how you arrived (for example a
-              search or a link), your general location (country or city), device and browser type, and clicks on our
-              navigation and contact options. Google Analytics 4 does not store full IP addresses. We cannot identify
-              you from this data and never use it for advertising.
+              search or a link), your general location (country or city), device and browser type, and selected navigation, tool-launch, case-study and enquiry actions. Page addresses are limited to known routes; query strings, fragments and referrer paths are excluded. A fixed product label can identify a referral from our invoicing or typing tool. Google Analytics 4 does not store full IP addresses. We use browser-based analytics identifiers, and do not send contact-form entries or email-draft URLs to Google. Advertising signals are disabled.
             </p>
             <p>
               If you click <strong>Decline</strong>, or make no choice, Google Analytics is not loaded and no analytics
@@ -91,19 +89,27 @@ export default function Privacy() {
               </div>
               <div role="row" className="legal-row">
                 <span role="cell">
-                  <code>_ga</code>
+                  <code>bijasa_marketing_ga</code>
                 </span>
                 <span role="cell">Google Analytics: tells visits apart. Only after you accept.</span>
-                <span role="cell">2 years</span>
+                <span role="cell">180 days, renewed with use</span>
               </div>
               <div role="row" className="legal-row">
                 <span role="cell">
-                  <code>_ga_VQ2CJHF54W</code>
+                  <code>bijasa_marketing_ga_VQ2CJHF54W</code>
                 </span>
                 <span role="cell">Google Analytics: keeps track of your session. Only after you accept.</span>
-                <span role="cell">2 years</span>
+                <span role="cell">180 days, renewed with use</span>
+              </div>
+              <div role="row" className="legal-row">
+                <span role="cell"><code>bj-attribution-source</code></span>
+                <span role="cell">Remembers only whether this visit came from our invoicing or typing product, after consent (session storage).</span>
+                <span role="cell">Until the browser tab closes</span>
               </div>
             </div>
+            <p>
+              Enquiry events count draft preparation or an email/copy action; they do not confirm that an email was sent or received.
+            </p>
             <p>
               You can change your choice at any time: <CookieSettingsLink label="open cookie settings" />. If you
               withdraw consent, we delete the analytics cookies from your browser.
