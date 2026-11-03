@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Search access and model training are separate preferences.
+User-agent: GPTBot
+Disallow: /
+
+Sitemap: https://bijasa.com/sitemap.xml

@@ -1,8 +1,14 @@
+import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 import { CookieSettingsLink } from '@/components/CookieConsent';
 import { BSymbol, HeroMark } from '@/components/Logo';
 import ScrollEffects from '@/components/ScrollEffects';
 import { CONTACT_EMAIL, caps, domains, teams } from '@/lib/content';
+
+export const metadata: Metadata = {
+  title: 'Custom Software Development & Product Engineering | Bijasa',
+  alternates: { canonical: 'https://bijasa.com/' },
+};
 
 export default function Home() {
   return (

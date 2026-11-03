@@ -10,11 +10,20 @@ const archivo = Archivo({
   variable: '--font-archivo',
 });
 
+const description = 'Custom software development, web and mobile applications, cloud platforms, and data and AI engineering by Bijasa. Deep roots. Long reach.';
+const searchTitle = 'Custom Software Development & Product Engineering | Bijasa';
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'Organization', '@id': 'https://bijasa.com/#organization', name: 'Bijasa', url: 'https://bijasa.com/', logo: 'https://bijasa.com/icon-512.png', email: 'hello@bijasa.com', slogan: 'Deep roots. Long reach.' },
+    { '@type': 'WebSite', '@id': 'https://bijasa.com/#website', name: 'Bijasa', url: 'https://bijasa.com/', publisher: { '@id': 'https://bijasa.com/#organization' } },
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://bijasa.com'),
   title: 'Bijasa — Deep roots. Long reach.',
-  description:
-    'Bijasa is a software company. We build software that grows from the ground up: clear foundations, then long reach.',
+  description,
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -22,9 +31,11 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-touch-icon.png',
   },
+  twitter: { card: 'summary', title: searchTitle, description, images: ['/icon-512.png'] },
+  robots: { index: true, follow: true },
   openGraph: {
-    title: 'Bijasa — Deep roots. Long reach.',
-    description: 'Software that grows from the ground up.',
+    title: searchTitle,
+    description,
     url: 'https://bijasa.com',
     siteName: 'Bijasa',
     images: [{ url: '/icon-512.png', width: 512, height: 512 }],
@@ -41,6 +52,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={archivo.variable}>
+      <head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
+      </head>
       <body>
         {children}
         <CookieConsent />
