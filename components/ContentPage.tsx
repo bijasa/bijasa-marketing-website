@@ -17,7 +17,7 @@ export function ContentPage({ title, eyebrow, intro, children }: {
         {children}
         <section aria-label="Explore Bijasa">
           <h2>Keep exploring</h2>
-          <p><a href="/services/">Services</a> · <a href="/tools/">Free tools</a> · <a href="/#contact">Discuss a project</a></p>
+          <p><a href="/services/">Services</a> · <a href="/work/">Case studies</a> · <a href="/tools/">Free tools</a> · <a href="/#contact">Discuss a project</a></p>
         </section>
       </div>
       <footer className="legal-foot">

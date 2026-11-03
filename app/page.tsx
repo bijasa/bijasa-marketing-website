@@ -155,7 +155,7 @@ export default function Home() {
                 </span>
               </a>
               <div className="close-rule" />
-              <p className="tools-more"><a href="/tools/">Explore the tools and their guides →</a></p>
+              <p className="tools-more"><a href="/tools/">Explore the tools and their guides →</a> · <a href="/work/">Read the product case studies →</a></p>
             </div>
           </section>
 

@@ -21,7 +21,7 @@ export default function Services() {
     </section>
     <section>
       <h2>Try something we have built</h2>
-      <p>Our free invoicing and typing tools offer a hands-on way to explore Bijasa software. <a href="/tools/">Explore the free tools</a>.</p>
+      <p>Our free invoicing and typing tools offer a hands-on way to explore Bijasa software. <a href="/tools/">Explore the free tools</a> or read the <a href="/work/">product case studies</a>.</p>
     </section>
   </ContentPage>;
 }
