@@ -18,6 +18,7 @@ export default function Home() {
           <BSymbol ink="#f4f0e7" />
         </a>
         <div id="bj-links" className="nav-links">
+          <a href="/tools/" data-track="nav_click" data-track-section="tools">Free tools</a>
           <a href="#domains" data-track="nav_click" data-track-section="domains">Domains</a>
           <a href="#capabilities" data-track="nav_click" data-track-section="capabilities">Capabilities</a>
           <a href="#expertise" data-track="nav_click" data-track-section="expertise">Expertise</a>
