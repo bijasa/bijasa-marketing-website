@@ -49,6 +49,15 @@ test('one manual page view, no advertising, and host-only prefixed cookies', () 
   assert.equal(h.appended[0].referrerPolicy, 'no-referrer');
   assert.equal(h.queue().find(x => x[0] === 'consent' && x[1] === 'default')[2].ad_storage, 'denied');
 });
+test('initialising a new document preserves existing consented analytics cookies', () => {
+  const h = setup({ consent: 'granted' });
+  h.a.loadAnalytics();
+  h.a.trackPage('/work');
+  assert.equal(h.cookies.length, 0, 'page navigation must not reset visitor or session cookies');
+  h.a.saveConsent('denied');
+  h.a.disableAnalytics();
+  assert.ok(h.cookies.some(value => value.startsWith('bijasa_marketing_ga=; Max-Age=0')));
+});
 test('private URL values, arbitrary events and parameters never reach the queue', () => {
   const h = setup({ consent: 'granted' }); h.a.loadAnalytics();
   h.a.trackPage('/private/PrivateCanary?customer=PrivateCanary');

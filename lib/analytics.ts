@@ -113,7 +113,6 @@ function initialise(next: Record<string, string>) {
     window.gtag?.('consent', 'update', { analytics_storage: 'granted' });
     return;
   }
-  clearAnalyticsCookies();
   window.dataLayer = window.dataLayer || [];
   window.gtag = function gtag() {
     // Google's queue expects an Arguments payload.
