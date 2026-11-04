@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { CookieSettingsLink } from '@/components/CookieConsent';
-import { BSymbol } from '@/components/Logo';
 import { CONTACT_EMAIL } from '@/lib/content';
 
 export const metadata: Metadata = {
@@ -15,16 +14,7 @@ export default function Privacy() {
   const mail = <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>;
   return (
     <>
-      <header className="legal-nav">
-        <a href="/" className="legal-home" aria-label="Bijasa home">
-          <BSymbol ink="#f4f0e7" />
-        </a>
-        <a href="/" className="legal-back">
-          ← Back to bijasa.com
-        </a>
-      </header>
-
-      <main className="legal">
+      <main id="main" className="legal">
         <div className="legal-wrap">
           <div className="eyebrow">Privacy policy</div>
           <h1 className="legal-h">Your data, plainly.</h1>
@@ -45,11 +35,7 @@ export default function Privacy() {
             <h2>What we collect</h2>
             <h3>When you contact us</h3>
             <p>
-              The contact form does not send or store anything on our servers. When you press <em>Send message</em>,
-              your browser prepares an email to {CONTACT_EMAIL} in the email service you choose (Gmail, Outlook or your
-              own email app). We only receive what you choose to send: usually your name, email address, company and
-              message. We use it to reply to you and discuss your enquiry, and keep it only as long as needed for that
-              conversation and any work that follows.
+              In this V2 review build, direct delivery is not enabled on the public site. Locally, test submissions go only to a local mock that does not store your enquiry or send email. You can prepare an email draft, open it in Gmail, Outlook or your email app, or copy it. Preparing or copying a draft does not send it. If you choose to send an email, we receive the name, email address, optional company and budget, project type and description you include. We use these details to respond and discuss your enquiry, and keep them only as long as needed for the conversation and any work that follows. Do not include confidential or sensitive information in an initial enquiry.
             </p>
             <h3>Analytics, only with your consent</h3>
             <p>
@@ -108,7 +94,7 @@ export default function Privacy() {
               </div>
             </div>
             <p>
-              After consent, approved public campaign labels can help us understand which launch links were used. We keep only a fixed label in this tab's session storage (bj-campaign.v1), until the tab closes or consent is withdrawn. Arbitrary query values are never forwarded. Enquiry events count draft preparation or an email/copy action; they do not confirm that an email was sent or received.
+              After consent, approved public campaign labels can help us understand which launch links were used. We keep only a fixed label in this tab's session storage (bj-campaign.v1), until the tab closes or consent is withdrawn. Arbitrary query values are never forwarded. Draft preparation and email/copy actions are separate interaction events, never confirmed leads. A submission event is reserved for acceptance by a configured enquiry endpoint; local mock submissions are excluded. Endpoint acceptance would not itself verify email delivery or qualify a sales lead.
             </p>
             <p>
               You can change your choice at any time: <CookieSettingsLink label="open cookie settings" />. If you
@@ -149,10 +135,6 @@ export default function Privacy() {
           </section>
         </div>
 
-        <footer className="legal-foot">
-          <span>© 2026 Bijasa</span>
-          <strong>Deep roots. Long reach.</strong>
-        </footer>
       </main>
     </>
   );

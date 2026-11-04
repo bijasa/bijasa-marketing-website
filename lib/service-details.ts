@@ -1,0 +1,6 @@
+/** Examples of possible scope, not claims about previously delivered client work. */
+export const serviceDetails: Record<string,{deliverables:string[];approach:string}> = {
+ 'web-mobile-development': { deliverables:['Product brief & prototype','Accessible website / application','APIs & integrations','Design system','Tested release & handover'], approach:'Choose browser, mobile and backend technologies around your users, integrations and maintenance needs. Agree on accessibility targets, data boundaries and the critical user journeys before building.' },
+ 'cloud-platforms-devops': { deliverables:['Architecture review','Versioned infrastructure','Delivery pipelines','Observability & alerts','Recovery & handover runbooks'], approach:'Start with operational constraints and ownership. Keep environments reproducible, access deliberate and deployment steps reviewable. The level of automation should match your team and availability needs.' },
+ 'data-engineering-ai': { deliverables:['Source & quality assessment','Data pipelines','Analytics workflows','Evaluated AI prototype','Monitoring & review controls'], approach:'Map permissions and data quality before designing the pipeline or model workflow. Evaluate representative cases, expose uncertainty and preserve human review where the decision requires it.' },
+};

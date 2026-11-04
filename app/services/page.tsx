@@ -1,5 +1,6 @@
 import { ContentPage } from '@/components/ContentPage';
 import { services } from '@/lib/services';
+import { caps } from '@/lib/content';
 import { searchMetadata } from '@/lib/search-metadata';
 
 export const metadata = searchMetadata('Software Development Services',
@@ -13,6 +14,11 @@ export default function Services() {
       <p>{service.intro}</p>
       <p><a href={`/services/${service.slug}/`}>Explore {service.name.toLowerCase()} →</a></p>
     </section>)}
+    <section>
+      <h2>Capabilities across the whole lifecycle</h2>
+      <p>These service guides are starting points. Our work is not limited to three categories or a particular industry or technology.</p>
+      <div className="article-service-grid">{caps.map(c => <article key={c.n}><span className="mono">{c.n}</span><h3>{c.t}</h3><p>{c.d}</p></article>)}</div>
+    </section>
     <section>
       <h2>From discovery to ongoing use</h2>
       <p>Product strategy and discovery help define what to build. Design systems and UX make the interface consistent and usable. Security and compliance readiness need attention while the system is being designed, and maintenance keeps it useful after launch.</p>

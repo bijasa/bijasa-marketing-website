@@ -9,6 +9,7 @@ export default function Tools() {
     intro="Try Bijasa software through two free tools: an invoicing platform for independent businesses and typing practice for Indian government exams. Each tool has its own website, guides and workspace.">
     <section>
       <h2><a href="https://invoicing.bijasa.com/">Bijasa Invoicing Platform</a></h2>
+      <img className="article-image" src="/work/invoicing.webp" alt="Bijasa Invoicing public landing page and invoice preview" width="1280" height="720" loading="lazy"/>
       <p>A free invoice maker for freelancers, studios and small businesses. Prepare invoices, quotations and other supported business documents, add your branding, and export a PDF. No signup or subscription is required; invoice records stay in your browser on your device.</p>
       <p>The platform helps prepare documents from the details you supply. It does not verify your business tax status, generate an IRN or file government returns. Keep backups of your locally stored records.</p>
       <p><a href="https://invoicing.bijasa.com/">Open the free invoicing platform →</a> · <a href="/work/invoicing-platform/">Read the product case study →</a></p>
@@ -16,6 +17,7 @@ export default function Tools() {
     </section>
     <section>
       <h2><a href="https://typing.bijasa.com/">Bijasa Typing</a></h2>
+      <img className="article-image" src="/work/typing.webp" alt="Bijasa Typing public landing page with multilingual practice" width="1280" height="720" loading="lazy"/>
       <p>Free typing practice in English, Hindi and Marathi, with lessons, keyboard layouts, drills and mock tests for Indian government exams. Review speed, accuracy and individual mistakes to understand what to practise next.</p>
       <p>Exam profiles list their sources and verification information. Check the current official notice for your own exam before relying on a practice configuration. Bijasa Typing is not affiliated with an exam conducting body.</p>
       <p><a href="https://typing.bijasa.com/">Start free typing practice →</a> · <a href="/work/typing-practice/">Read the product case study →</a></p>

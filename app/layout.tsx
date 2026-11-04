@@ -1,11 +1,14 @@
 import type { Metadata, Viewport } from 'next';
-import { Archivo } from 'next/font/google';
+import localFont from 'next/font/local';
 import CookieConsent from '@/components/CookieConsent';
 import './globals.css';
+import './studio.css';
+import SiteHeader from '@/components/SiteHeader';
+import SiteFooter from '@/components/SiteFooter';
 
-const archivo = Archivo({
-  subsets: ['latin'],
-  axes: ['wdth'],
+const archivo = localFont({
+  src: '../public/fonts/archivo-latin-wght-normal.woff2',
+  weight: '100 900',
   display: 'swap',
   variable: '--font-archivo',
 });
@@ -56,7 +59,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
       </head>
       <body>
+        <SiteHeader />
         {children}
+        <SiteFooter />
         <CookieConsent />
       </body>
     </html>
