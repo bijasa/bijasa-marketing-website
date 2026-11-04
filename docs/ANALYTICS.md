@@ -15,3 +15,8 @@ source_product is invoicing, typing or direct_or_external. It comes from a recog
 generate_lead means an enquiry handoff action (Gmail, Outlook, email app, copy, or fixed email link). The static site cannot verify that mail was sent or received. contact_form_ready means local validation and draft preparation succeeded. Neither is a confirmed or qualified sales lead.
 
 Run npm run test:analytics before building. CI runs these privacy and consent regressions before deployment. Review route and enum lists when adding pages or actions.
+
+
+## Approved campaign labels, 4 November 2026
+
+After consent only, the collector accepts the complete fixed source/medium/campaign/content tuples listed in campaignLinks. It passes them as GA4 standard campaign_source, campaign_medium, campaign_name and campaign_content configuration fields, while page_location still excludes the query string. Unknown and mismatched tuples are rejected. Only the allowlisted content label is kept in per-tab session storage; restored values are validated again. Withdrawal clears the label and the tag's campaign overrides. A fixed bijasa_analytics_qa campaign is reserved for controlled verification and should be excluded from launch reporting. New campaigns require an explicit allowlist update; do not broaden this to arbitrary query values. No ad click identifiers, search terms, names, contact details or raw URLs are added.

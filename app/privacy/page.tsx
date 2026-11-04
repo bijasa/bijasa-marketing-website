@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/privacy/' },
 };
 
-const UPDATED = '3 November 2026';
+const UPDATED = '4 November 2026';
 
 export default function Privacy() {
   const mail = <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>;
@@ -108,7 +108,7 @@ export default function Privacy() {
               </div>
             </div>
             <p>
-              Enquiry events count draft preparation or an email/copy action; they do not confirm that an email was sent or received.
+              After consent, approved public campaign labels can help us understand which launch links were used. We keep only a fixed label in this tab's session storage (bj-campaign.v1), until the tab closes or consent is withdrawn. Arbitrary query values are never forwarded. Enquiry events count draft preparation or an email/copy action; they do not confirm that an email was sent or received.
             </p>
             <p>
               You can change your choice at any time: <CookieSettingsLink label="open cookie settings" />. If you
@@ -157,3 +157,4 @@ export default function Privacy() {
     </>
   );
 }
+

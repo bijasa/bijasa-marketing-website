@@ -117,3 +117,38 @@ test('third-party failures cannot interrupt contact actions or withdrawal', () =
   assert.doesNotThrow(() => h.a.trackPage('/tools'));
   assert.doesNotThrow(() => h.a.disableAnalytics());
 });
+
+
+test('campaign attribution uses only a complete fixed label tuple', () => {
+  const h = setup({ consent: 'granted' });
+  h.window.location.search = '?utm_source=linkedin&utm_medium=organic_social&utm_campaign=bijasa_tools_launch&utm_content=invoicing_launch&email=PrivateCanary';
+  h.a.loadAnalytics();
+  const config = h.queue().find(x => x[0] === 'config')[2];
+  assert.equal(config.campaign_source, 'linkedin');
+  assert.equal(config.campaign_medium, 'organic_social');
+  assert.equal(config.campaign_name, 'bijasa_tools_launch');
+  assert.equal(config.campaign_content, 'invoicing_launch');
+  assert.equal(h.session.get('bj-campaign.v1'), 'invoicing_launch');
+  h.window.location.search = ''; h.a.trackPage('/tools');
+  assert.equal(h.queue().filter(x => x[0] === 'event').at(-1)[2].campaign_name, 'bijasa_tools_launch');
+  assert.ok(!JSON.stringify(h.queue()).includes('PrivateCanary'));
+  h.a.saveConsent('denied'); h.a.disableAnalytics();
+  assert.equal(h.session.has('bj-campaign.v1'), false);
+});
+test('unknown campaign values and tampered storage never reach analytics', () => {
+  for (const content of ['PrivateCanary', '__proto__', 'constructor', 'invoicing_launch']) {
+    const h = setup({ consent: 'granted' });
+    h.session.set('bj-campaign.v1', 'PrivateCanary');
+    h.window.location.search = '?utm_source=PrivateCanary&utm_medium=email&utm_campaign=bijasa_tools_launch&utm_content=' + content;
+    h.a.loadAnalytics();
+    assert.equal(h.queue().find(x => x[0] === 'config')[2].campaign_source, undefined);
+    assert.ok(!JSON.stringify(h.queue()).includes('PrivateCanary'));
+  }
+});
+test('campaign labels are not stored before consent and QA uses a fixed campaign', () => {
+  const h = setup();
+  h.window.location.search = '?utm_source=qa&utm_medium=internal_test&utm_campaign=bijasa_analytics_qa&utm_content=delivery_check';
+  h.a.loadAnalytics(); assert.equal(h.session.size, 0); assert.equal(h.queue().length, 0);
+  h.a.saveConsent('granted'); h.a.trackPage('/');
+  assert.equal(h.queue().find(x => x[0] === 'config')[2].campaign_name, 'bijasa_analytics_qa');
+});

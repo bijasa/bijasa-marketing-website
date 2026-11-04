@@ -94,6 +94,7 @@ export function clearAnalyticsCookies() {
   } catch { /* Storage may be blocked. */ }
 }
 export function disableAnalytics() {
+  clearCampaign();
   Reflect.set(window, 'ga-disable-' + GA_ID, true);
   try {
     window.gtag?.('consent', 'update', {
@@ -138,6 +139,58 @@ function initialise(next: Record<string, string>) {
   document.head.appendChild(script);
   loaded = true;
 }
+// Only these public campaign labels can reach GA4. Never forward raw query values.
+const campaignLinks: Record<string, readonly [string, string, string]> = {
+  combined_launch: ['linkedin', 'organic_social', 'bijasa_tools_launch'],
+  invoicing_launch: ['linkedin', 'organic_social', 'bijasa_tools_launch'],
+  typing_launch: ['linkedin', 'organic_social', 'bijasa_tools_launch'],
+  invoicing_case_study: ['linkedin', 'organic_social', 'bijasa_tools_launch'],
+  engineering_story: ['linkedin', 'organic_social', 'bijasa_tools_launch'],
+  project_enquiry: ['linkedin', 'organic_social', 'bijasa_tools_launch'],
+  invoice_review: ['bijasa_content', 'referral', 'bijasa_tools_launch'],
+  practice_routine: ['bijasa_content', 'referral', 'bijasa_tools_launch'],
+  adviser_review: ['direct_outreach', 'email', 'bijasa_tools_launch'],
+  educator_review: ['direct_outreach', 'email', 'bijasa_tools_launch'],
+  project_examples: ['direct_outreach', 'email', 'bijasa_tools_launch'],
+  delivery_check: ['qa', 'internal_test', 'bijasa_analytics_qa'],
+};
+const campaignStorageKey = 'bj-campaign.v1';
+let campaignChoice: string | null = null;
+function knownCampaign(value: string): boolean {
+  return Object.prototype.hasOwnProperty.call(campaignLinks, value);
+}
+function campaignFields(): Record<string, string> {
+  try {
+    const query = new URLSearchParams(window.location.search);
+    const content = query.get('utm_content') ?? '';
+    const definition = knownCampaign(content) ? campaignLinks[content] : undefined;
+    if (definition && query.get('utm_source') === definition[0] &&
+        query.get('utm_medium') === definition[1] && query.get('utm_campaign') === definition[2]) {
+      campaignChoice = content;
+      try { window.sessionStorage.setItem(campaignStorageKey, content); } catch { /* Memory only. */ }
+    }
+    if (!campaignChoice) {
+      const restored = window.sessionStorage.getItem(campaignStorageKey);
+      if (restored && knownCampaign(restored)) campaignChoice = restored;
+    }
+  } catch { /* Blocked storage cannot interrupt the product. */ }
+  const definition = campaignChoice && knownCampaign(campaignChoice) ? campaignLinks[campaignChoice] : undefined;
+  return definition ? {
+    campaign_source: definition[0], campaign_medium: definition[1],
+    campaign_name: definition[2], campaign_content: campaignChoice!,
+  } : {};
+}
+function clearCampaign() {
+  campaignChoice = null;
+  try { window.sessionStorage.removeItem(campaignStorageKey); } catch { /* Storage may be blocked. */ }
+  try {
+    window.gtag?.('set', {
+      campaign_source: undefined, campaign_medium: undefined,
+      campaign_name: undefined, campaign_content: undefined,
+    });
+  } catch { /* Withdrawing consent must always work. */ }
+}
+
 export function trackPage(pathname: string) {
   if (!analyticsAvailable() || readConsent() !== 'granted') return;
   const page = safeAnalyticsPage(pathname);
@@ -147,6 +200,7 @@ export function trackPage(pathname: string) {
     page_title: page.title + ' | Bijasa',
     page_referrer: referrerOrigin(),
     source_product: sourceProduct(),
+    ...campaignFields(),
   };
   try {
     initialise(next);
@@ -185,3 +239,4 @@ export function trackLink(href: string) {
     track('enquiry_cta_click', { entry_point: entry });
   }
 }
+
