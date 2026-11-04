@@ -55,6 +55,12 @@ export default async function CaseStudy({ params }: Props) {
       {section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
     </section>)}
     <section>
+      <h2>Engineering structure and tradeoffs</h2>
+      <div className="architecture-flow" aria-label="Product workflow">{(slug === 'invoicing-platform' ? ['Document inputs', 'Browser-local records', 'Branded PDF / backup export'] : ['Language & keyboard input', 'Practice / mock session', 'Mistake feedback & next practice']).map((step,i) => <div key={step}><span className="mono">0{i+1}</span><strong>{step}</strong></div>)}</div>
+      <p>{slug === 'invoicing-platform' ? 'Keeping records in the browser avoids a central invoice database and an account requirement for the core workflow. The tradeoff is that storage belongs to that device and browser: users need exportable backups, and records are not automatically synced.' : 'The practice experience connects multilingual input to session feedback. Core practice can work offline after an initial visit; account and group features have separate online requirements. Keyboard behavior and skipped-word handling need to preserve useful feedback across scripts.'}</p>
+      <p>These descriptions are based on the verified product behavior documented here. Framework versions, infrastructure details and private implementation specifics have not been verified and are intentionally not presented as facts.</p>
+    </section>
+    <section>
       <h2>What is live</h2>
       <ul className={styles.outcomes}>{study.outcomes.map(outcome => <li key={outcome}>{outcome}</li>)}</ul>
       <p>Explore the product and its published guides:</p>

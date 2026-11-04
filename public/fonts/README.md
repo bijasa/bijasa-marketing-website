@@ -1,0 +1,1 @@
+Archivo Latin variable weight font (100–900), sourced from the existing local @fontsource-variable/archivo package. SIL Open Font License included in Archivo-LICENSE.txt. Used with next/font/local to eliminate build-time font network requests and keep the existing typeface. No font service is contacted by visitors.

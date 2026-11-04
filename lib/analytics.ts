@@ -27,7 +27,9 @@ const rules: Record<string, Record<string, readonly string[]>> = {
   case_study_view: { case_study: ['invoicing_platform', 'typing_practice'] },
   enquiry_cta_click: { entry_point: ['home', 'services', 'tools', 'case_study', 'other'] },
   contact_start: {}, contact_form_ready: {},
-  generate_lead: { method: ['gmail', 'outlook', 'mail_app', 'copy', 'email_button'] },
+  contact_handoff: { method: ['gmail', 'outlook', 'mail_app', 'copy', 'email_button'] },
+  generate_lead: { method: ['endpoint'] },
+  service_explore: { service: ['web-mobile-development', 'cloud-platforms-devops', 'data-engineering-ai'] },
 };
 let sessionConsent: Consent | undefined;
 let loaded = false;
@@ -230,6 +232,8 @@ export function trackLink(href: string) {
   if (url.hostname === 'typing.bijasa.com') { track('tool_open', { tool: 'typing' }); return; }
   if (url.origin !== window.location.origin) return;
   const path = normalise(url.pathname);
+  const service = path.split('/')[2];
+  if (path.startsWith('/services/') && ['web-mobile-development', 'cloud-platforms-devops', 'data-engineering-ai'].includes(service)) track('service_explore', { service });
   if (Object.hasOwn(studies, path)) track('case_study_open', { case_study: studies[path] });
   if (path === '/' && url.hash === '#contact') {
     const current = safeAnalyticsPage(window.location.pathname).path;

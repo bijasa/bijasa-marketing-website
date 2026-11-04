@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { ContentPage } from '@/components/ContentPage';
 import { services } from '@/lib/services';
+import { serviceDetails } from '@/lib/service-details';
 import { searchMetadata } from '@/lib/search-metadata';
 
 export const dynamicParams = false;
@@ -32,6 +33,16 @@ export default async function ServicePage({ params }: Props) {
     {service.sections.map(section => <section key={section.heading}>
       <h2>{section.heading}</h2><p>{section.text}</p>
     </section>)}
+    <section>
+      <h2>Example deliverables</h2>
+      <ul className="service-tags">{serviceDetails[slug].deliverables.map(item => <li key={item}>{item}</li>)}</ul>
+      <p>{serviceDetails[slug].approach}</p>
+    </section>
+    <section>
+      <h2>How we engage</h2>
+      <div className="article-service-grid"><article><h3>Define the work</h3><p>Start with discovery, a review of your existing system, or a defined project brief. Agree on goals, constraints and a useful first release.</p></article><article><h3>Build with visibility</h3><p>Review progress in iterations, validate critical paths and prepare a clear handover. Discuss ongoing support and responsibilities before launch.</p></article></div>
+      <p>Explore <a href="/work/">our owned-product case studies</a> for concrete examples of product and engineering decisions. Each project has its own requirements and technical constraints.</p>
+    </section>
     <section>
       <h2>Discuss your project</h2>
       <p>Describe the outcome you want and the constraints you already know. We can use that context to discuss a sensible next step.</p>

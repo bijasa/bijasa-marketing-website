@@ -5,8 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "test:analytics": "node --test scripts/analytics.test.cjs"
+    "start": "node scripts/preview.mjs",
+    "test:analytics": "node --test scripts/analytics.test.cjs",
+    "typecheck": "tsc --noEmit",
+    "dev:mock": "node scripts/mock-enquiries.mjs",
+    "test:contact": "node --test scripts/contact.test.mjs",
+    "preview": "node scripts/preview.mjs",
+    "test:browser": "node scripts/browser-qa.cjs",
+    "review": "node scripts/review.mjs"
   },
   "dependencies": {
     "next": "16.4.0",

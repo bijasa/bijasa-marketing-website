@@ -35,7 +35,7 @@ function setup({ consent = null, host = 'bijasa.com', blocked = false } = {}) {
 }
 test('no script or events before consent, after refusal, or on an unknown host', () => {
   for (const input of [{}, { consent: 'denied' }, { consent: 'granted', host: 'localhost' }]) {
-    const h = setup(input); h.a.loadAnalytics(); h.a.track('generate_lead', { method: 'gmail' });
+    const h = setup(input); h.a.loadAnalytics(); h.a.track('contact_handoff', { method: 'gmail' });
     assert.equal(h.appended.length, 0); assert.equal(h.queue().length, 0);
   }
 });
@@ -61,8 +61,8 @@ test('initialising a new document preserves existing consented analytics cookies
 test('private URL values, arbitrary events and parameters never reach the queue', () => {
   const h = setup({ consent: 'granted' }); h.a.loadAnalytics();
   h.a.trackPage('/private/PrivateCanary?customer=PrivateCanary');
-  h.a.track('generate_lead', { method: 'gmail', name: 'PrivateCanary', message: 'PrivateCanary' });
-  h.a.track('generate_lead', { method: 'PrivateCanary' });
+  h.a.track('contact_handoff', { method: 'gmail', name: 'PrivateCanary', message: 'PrivateCanary' });
+  h.a.track('contact_handoff', { method: 'PrivateCanary' });
   h.a.track('PrivateCanary', { message: 'PrivateCanary' });
   h.a.track('constructor', { message: 'PrivateCanary' });
   const body = JSON.stringify(h.queue());
@@ -103,7 +103,7 @@ test('case-study page views and enquiry clicks retain an owned-product referral'
 test('withdrawal stops events immediately without reloading or deleting unrelated cookies', () => {
   const h = setup({ consent: 'granted' }); h.a.loadAnalytics();
   h.a.saveConsent('denied'); h.a.disableAnalytics(); const count = h.queue().length;
-  h.a.track('generate_lead', { method: 'copy' }); h.a.trackPage('/tools');
+  h.a.track('contact_handoff', { method: 'copy' }); h.a.trackPage('/tools');
   assert.equal(h.queue().length, count);
   assert.equal(h.window['ga-disable-G-VQ2CJHF54W'], true);
   assert.ok(h.cookies.every(x => !x.startsWith('unrelated=')));
@@ -160,4 +160,18 @@ test('campaign labels are not stored before consent and QA uses a fixed campaign
   h.a.loadAnalytics(); assert.equal(h.session.size, 0); assert.equal(h.queue().length, 0);
   h.a.saveConsent('granted'); h.a.trackPage('/');
   assert.equal(h.queue().find(x => x[0] === 'config')[2].campaign_name, 'bijasa_analytics_qa');
+});
+
+test('handoffs never emit confirmed lead events and service exploration is allowlisted', () => {
+  const h = setup({ consent: 'granted' }); h.a.loadAnalytics();
+  h.a.track('contact_handoff', { method: 'gmail' });
+  h.a.trackLink('/services/web-mobile-development/?email=PrivateCanary');
+  let events = h.queue().filter(x => x[0] === 'event');
+  assert.ok(events.some(x => x[1] === 'contact_handoff'));
+  assert.ok(!events.some(x => x[1] === 'generate_lead'));
+  assert.ok(events.some(x => x[1] === 'service_explore' && x[2].service === 'web-mobile-development'));
+  h.a.track('generate_lead', { method: 'endpoint' });
+  events = h.queue().filter(x => x[0] === 'event');
+  assert.equal(events.filter(x => x[1] === 'generate_lead').length, 1);
+  assert.ok(!JSON.stringify(events).includes('PrivateCanary'));
 });

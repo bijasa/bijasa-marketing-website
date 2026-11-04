@@ -1,78 +1,51 @@
-<div align="center">
+# Bijasa — Website V2
 
-<a href="https://bijasa.com"><img src="public/icon-192.png" alt="Bijasa" width="88" height="88"></a>
+**Deep roots. Long reach.** A software engineering studio website built with Next.js App Router, React, strict TypeScript and plain CSS. Statically exported for GitHub Pages; all existing routes retained.
 
-# Bijasa
+V2 is isolated on `feature/bijasa-website-v2`. **Local review only: do not push to main or dispatch the Pages workflow without explicit deployment approval.** Every push to main deploys automatically.
 
-**Deep roots. Long reach.**
+## Local review
 
-The website of Bijasa, a software company. Live at **[bijasa.com](https://bijasa.com)**.
+Use Node 22.18+ (or Node 24+) for the local mock and tests.
 
-[![Deploy](https://github.com/bijasa/bijasa-marketing-website/actions/workflows/pages.yml/badge.svg)](https://github.com/bijasa/bijasa-marketing-website/actions/workflows/pages.yml)
-
-</div>
-
----
-
-## Overview
-
-A single-page site. Its main feature is a scroll-driven hero: the lowercase **b** draws itself, then grows into the full *bijasa* wordmark as you scroll. Below it are sections on our approach, the industries we work in, our capabilities, our team and how to contact us.
-
-- **Fast and static.** Every page is pre-built HTML, with no server at runtime.
-- **Accessible.** Uses semantic markup and keyboard-friendly forms, and respects `prefers-reduced-motion`.
-- **Responsive.** Fluid type and layout from 390px phones to wide desktops.
-
-## Tech stack
-
-| | |
-|---|---|
-| Framework | [Next.js](https://nextjs.org) (App Router, static export) |
-| Language | TypeScript, React |
-| Styling | Plain CSS with design tokens, Archivo typeface |
-| Hosting | GitHub Pages, deployed by GitHub Actions |
-
-## Getting started
-
-Requires **Node.js 20+**.
-
-```bash
-npm install
-npm run dev      # http://localhost:3000
-npm run build    # static site written to ./out
+```sh
+npm ci
+npm run build
+npm run review
 ```
 
-## Project structure
+Open **http://localhost:3000**. `review` starts the production-export preview and the local enquiry mock together. Ctrl+C stops both. For live editing, use `npm run dev -- --hostname 127.0.0.1 --port 3000`, with `npm run dev:mock` in a second terminal. `npm run preview` / `npm start` serve only the static export.
 
-```
-app/
-  layout.tsx          Page shell, metadata, fonts
-  page.tsx            All page sections
-  globals.css         Design tokens and styles
-components/
-  ScrollEffects.tsx   Scroll-linked animation (hero, reveals, thread)
-  ContactForm.tsx     Contact form
-  Logo.tsx            Bijasa symbol and wordmark
-lib/
-  content.ts          Site copy (domains, capabilities, teams, contact email)
-  contact.ts          Form validation
-public/               Icons and static assets
+## Checks
+
+```sh
+npm run typecheck
+npm run test:analytics
+npm run test:contact
+npm run build
+npm run test:browser
 ```
 
-Most text changes only need an edit to `lib/content.ts`.
+Browser QA uses separately installed Playwright, axe and Lighthouse. Setup and measured results are in [V2_CHANGELOG.md](V2_CHANGELOG.md). QA screenshots/reports stay in ignored `artifacts/v2/`.
 
-## Contact form
+## Content and configuration
 
-The form doesn't need a server. It checks what the visitor typed, then opens a ready-to-send email to the Bijasa inbox in **Gmail**, **Outlook** or the visitor's own email app. Visitors can also copy the message to send it themselves.
+- `lib/content.ts`: original industries and capabilities.
+- `lib/services.ts` and `lib/service-details.ts`: services and example deliverables.
+- `lib/case-studies.ts`: verified owned-product evidence and genuine screenshots.
+- `lib/social.ts`: verified official profiles only.
+- `lib/enquiry-delivery.ts`: disabled production endpoint adapter; loopback-only mock configuration.
+- `app/globals.css` and `app/studio.css`: base styles, design tokens, components and responsive rules.
+- `public/fonts/`: locally served Archivo and its SIL Open Font License.
 
-## Deployment
+Direct live enquiry delivery is **not configured**. Local mocks do not store messages or send email. Existing Gmail, Outlook, email app and draft-copy options remain. See [enquiry setup](docs/V2_ENQUIRY_SETUP.md) before enabling any provider. Never place credentials in public environment variables.
 
-Every push to `main` builds the site and publishes it to GitHub Pages automatically ([workflow](.github/workflows/pages.yml)).
+## Review documents
 
-## Contact
+- [Architecture and baseline audit](V2_AUDIT.md)
+- [Changes, test results and file list](V2_CHANGELOG.md)
+- [Acceptance and deployment checklist](V2_REVIEW_CHECKLIST.md)
+- [Missing verified content](docs/V2_CONTENT_GAPS.md)
+- [Analytics behavior](docs/ANALYTICS.md)
 
-**[hello@bijasa.com](mailto:hello@bijasa.com)**
-
-## License
-
-© 2026 Bijasa. All rights reserved.
-The source code, content, name and logo are not licensed for reuse. See [LICENSE](LICENSE).
+© 2026 Bijasa. All rights reserved. See [LICENSE](LICENSE). The Archivo font has its own included license.
