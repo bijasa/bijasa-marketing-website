@@ -12,7 +12,7 @@ export default function Services() {
     {services.map(service => <section key={service.slug}>
       <h2><a href={`/services/${service.slug}/`}>{service.name}</a></h2>
       <p>{service.intro}</p>
-      <p><a href={`/services/${service.slug}/`}>Explore {service.name.toLowerCase()} →</a></p>
+      <p><a href={`/services/${service.slug}/`}>Read about {service.name}</a></p>
     </section>)}
     <section>
       <h2>Capabilities across the whole lifecycle</h2>
@@ -23,7 +23,7 @@ export default function Services() {
       <h2>From discovery to ongoing use</h2>
       <p>Product strategy and discovery help define what to build. Design systems and UX make the interface consistent and usable. Security and compliance readiness need attention while the system is being designed, and maintenance keeps it useful after launch.</p>
       <p>Tell us about your current workflow, the people who use it and the outcome you need. That provides a practical starting point for discussing scope, priorities and delivery.</p>
-      <p><a href="/#contact">Talk to Bijasa about your project →</a></p>
+      <p><a href="/#contact">Talk to Bijasa about your project</a></p>
     </section>
     <section>
       <h2>Try something we have built</h2>

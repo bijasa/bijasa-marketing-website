@@ -46,7 +46,7 @@ export default async function ServicePage({ params }: Props) {
     <section>
       <h2>Discuss your project</h2>
       <p>Describe the outcome you want and the constraints you already know. We can use that context to discuss a sensible next step.</p>
-      <p><a href="/#contact">Contact Bijasa →</a></p>
+      <p><a href="/#contact">Contact Bijasa</a></p>
     </section>
   </ContentPage>;
 }
