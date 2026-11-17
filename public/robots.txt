@@ -4,8 +4,8 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
-# Search access and model training are separate preferences.
+# AI search and AI training crawlers may read public pages.
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
 Sitemap: https://bijasa.com/sitemap.xml
