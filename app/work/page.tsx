@@ -8,7 +8,7 @@ export const metadata = searchMetadata('Products and Case Studies: Bijadex, Gear
 
 export default function Work() {
   return <ContentPage title="Four products, built by Bijasa." eyebrow="Products and case studies"
-    intro="Software for shops, workshops, freelancers and exam aspirants. Read the problem behind each one and the decisions we made building it.">
+    intro="A desktop app, an operations system, a web platform and a learning tool. Read the problem behind each one and the decisions we made building it.">
     {caseStudies.map(study => <section key={study.slug}>
       <h2><a href={`/work/${study.slug}/`}>{study.product}</a></h2>
       <p>{study.summary}</p>

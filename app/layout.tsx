@@ -20,8 +20,8 @@ const bricolage = localFont({
   variable: '--font-bricolage',
 });
 
-const description = 'Bijasa builds software for Indian shops, garages and small businesses: Bijadex shop billing, GearShift workshop software, free invoicing and typing practice, and custom software development.';
-const searchTitle = 'Software for Indian Shops, Garages and Small Businesses | Bijasa';
+const description = 'Bijasa is a software engineering company. We design and build web platforms, desktop and mobile apps, business systems, cloud, data and AI, from idea to launch.';
+const searchTitle = 'Bijasa | Software Engineering, From Idea to Launch';
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#f2f3ef',
+  themeColor: '#ffffff',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

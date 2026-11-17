@@ -11,9 +11,9 @@ export const caseStudies = [
     "width": 1280,
     "height": 800,
     "tone": "bijadex",
-    "searchTitle": "Building Bijadex, Billing Software for Indian Shops",
-    "description": "A Bijasa product case study: Bijadex, a desktop billing and stock app for Indian shops, with barcode scanning, weighed items, GST bills, UPI and khata.",
-    "intro": "A billing and stock app for Indian shops. The cashier scans or types an item, weighs loose goods, takes cash, UPI or khata, and prints a GST bill. Records stay on the shop computer.",
+    "searchTitle": "Building Bijadex, Billing and Stock Software for Retail",
+    "description": "A Bijasa product case study: Bijadex, a desktop billing and stock app for retail shops, with barcode scanning, weighed items, GST bills, UPI and khata.",
+    "intro": "A billing and stock app for retail counters. The cashier scans or types an item, weighs loose goods, takes cash, UPI or khata, and prints a GST bill. Records stay on the shop computer.",
     "summary": "How a counter app handles barcode scanning, loose items, GST-inclusive prices and more than one counter on the shop Wi-Fi.",
     "url": "https://github.com/bijasa/bijadex-releases/releases/latest",
     "image": "/work/bijadex.jpg",
@@ -62,7 +62,9 @@ export const caseStudies = [
     ],
     "tradeoff": "Keeping records on the shop computer means billing works without the internet and the data stays with the shop. The tradeoff is that the shop must keep that computer backed up, and extra counters need to be on the same Wi-Fi as the main one.",
     "relatedService": "/services/web-mobile-development/",
-    "relatedServiceLabel": "Web and mobile development"
+    "relatedServiceLabel": "Web and mobile development",
+    "kind": "Desktop app",
+    "short": "Billing and stock for retail counters"
   },
   {
     "slug": "gearshift",
@@ -127,7 +129,9 @@ export const caseStudies = [
     ],
     "tradeoff": "Running at the workshop means the floor keeps working when the internet drops. The tradeoff is that customer links and work across several devices need a shared hosted setup, which a workshop chooses separately.",
     "relatedService": "/services/web-mobile-development/",
-    "relatedServiceLabel": "Web and mobile development"
+    "relatedServiceLabel": "Web and mobile development",
+    "kind": "Operations system",
+    "short": "Job tracking for service workshops"
   },
   {
     "slug": "invoicing-platform",
@@ -206,7 +210,9 @@ export const caseStudies = [
       "Records kept in the browser",
       "Branded PDF or backup"
     ],
-    "tradeoff": "Keeping records in the browser avoids a central invoice database and an account requirement for the core workflow. The tradeoff is that storage belongs to that device and browser: users need exportable backups, and records are not automatically synced."
+    "tradeoff": "Keeping records in the browser avoids a central invoice database and an account requirement for the core workflow. The tradeoff is that storage belongs to that device and browser: users need exportable backups, and records are not automatically synced.",
+    "kind": "Web platform",
+    "short": "Branded invoices and business documents"
   },
   {
     "slug": "typing-practice",
@@ -286,7 +292,9 @@ export const caseStudies = [
       "Practice or mock session",
       "Mistake feedback and next practice"
     ],
-    "tradeoff": "The practice experience connects multilingual input to session feedback. Core practice can work offline after an initial visit; account and group features have separate online requirements. Keyboard behavior and skipped-word handling need to preserve useful feedback across scripts."
+    "tradeoff": "The practice experience connects multilingual input to session feedback. Core practice can work offline after an initial visit; account and group features have separate online requirements. Keyboard behavior and skipped-word handling need to preserve useful feedback across scripts.",
+    "kind": "Learning tool",
+    "short": "Multilingual typing practice and mock tests"
   }
 ];
 
