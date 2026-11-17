@@ -1,28 +1,109 @@
 import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 import SocialLinks from '@/components/SocialLinks';
-import { BSymbol } from '@/components/Logo';
-import { CONTACT_EMAIL, caps, domains } from '@/lib/content';
+import ProductSwitcher from '@/components/ProductSwitcher';
+import { CONTACT_EMAIL, caps } from '@/lib/content';
 import { caseStudies } from '@/lib/case-studies';
-export const metadata: Metadata = { title: 'Custom Software Development & Product Engineering | Bijasa', alternates: { canonical: 'https://bijasa.com/' } };
+
+export const metadata: Metadata = { title: 'Software for Indian Shops, Garages and Small Businesses | Bijasa', alternates: { canonical: 'https://bijasa.com/' } };
+
+const serviceLinks: Record<string, string> = {
+  'Web & mobile engineering': '/services/web-mobile-development/',
+  'Cloud platforms & DevOps': '/services/cloud-platforms-devops/',
+  'Data engineering & AI': '/services/data-engineering-ai/',
+};
+
 const process = [
- ['Discover','Understand the people, the problem and the constraints. Define what a useful outcome looks like.'],
- ['Plan and Architect','Turn priorities into a practical scope, a considered architecture and a clear delivery plan.'],
- ['Design and Build','Work in visible iterations, connecting thoughtful interfaces with dependable engineering.'],
- ['Test and Refine','Review real user journeys, accessibility, security and performance before release.'],
- ['Deploy and Support','Prepare the handover, observe the system and plan improvements as needs evolve.'],
+  ['Listen', 'We learn how your work runs today, who does what and where it gets stuck.'],
+  ['Plan', 'We agree on what to build first, what it costs and how we will know it works.'],
+  ['Build', 'You see working screens early and often, not a big reveal at the end.'],
+  ['Test', 'We try it with real people and real data before anyone depends on it.'],
+  ['Launch and support', 'We hand it over, show your team how it works and stay to fix and improve it.'],
 ];
+
 export default function Home() {
- return <main id="main">
-  <section className="studio-hero" id="top"><div className="container hero-layout"><div className="hero-copy"><p className="eyebrow"><span className="status-dot"/> Independent thinking. End-to-end engineering.</p><h1>Software built<br/>around your<br/><em>ambitions.</em></h1><p className="hero-description">From simple digital experiences to complex engineering challenges, Bijasa designs, builds, integrates, and scales software across industries and technologies.</p><div className="actions"><a className="btn" href="#contact">Discuss Your Project <span aria-hidden="true">↗</span></a><a className="text-link" href="/work/">Explore Our Work <span aria-hidden="true">→</span></a></div></div><div className="engineering-visual" aria-hidden="true"><div className="visual-top"><span>BIJASA / ENGINEERING STUDIO</span><span>01 — ∞</span></div><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="orbit orbit-three"/><div className="visual-cross cross-a">+</div><div className="visual-cross cross-b">+</div><div className="visual-logo"><BSymbol ink="#f4f0e7"/></div><span className="visual-label label-a">IDEA</span><span className="visual-label label-b">ARCHITECTURE</span><span className="visual-label label-c">POSSIBILITY</span><div className="visual-bottom"><span>ROOTED IN CRAFT.</span><span>BUILT TO REACH.</span></div></div></div><div className="container hero-foot"><strong>Deep roots. Long reach.</strong><span>Strategy → Design → Engineering → Evolution</span><a href="#capabilities" aria-label="Explore our capabilities">Scroll to explore ↓</a></div></section>
-  <section className="proof-strip"><div className="container"><p>Big-picture thinking.<br/><strong>Detail-level care.</strong></p><span>Broad capabilities</span><span>Real, working products</span><span>Foundations for what’s next</span></div></section>
-  <section className="section" id="capabilities"><div className="container"><div className="section-heading"><div><p className="eyebrow">01 / What we do</p><h2>From the first question.<br/>To the next chapter.</h2></div><p>One engineering partner for the whole journey. Shape an idea, connect your systems, or build what comes next.</p></div><div className="capability-grid">{caps.map((c,i)=><article className={`capability-card capability-${i}`} key={c.n}><div className="card-top"><span className="mono">{c.n} /</span><span className="cap-icon" aria-hidden="true">{['⌘','↗','☁','◇','⊞','⊕','↻'][i]}</span></div><h3>{c.t}</h3><p>{c.d}</p><a className="card-link" href={i===1?'/services/web-mobile-development/':i===2?'/services/cloud-platforms-devops/':i===3?'/services/data-engineering-ai/':'/#contact'}>Explore the possibilities <span aria-hidden="true">↗</span></a></article>)}</div><p className="section-note">A starting point, never a boundary. <a href="/services/">Explore our services →</a></p></div></section>
-  <section className="section beyond"><div className="container beyond-layout"><div><p className="eyebrow">Beyond categories. Built for possibilities.</p><h2>If it’s software,<br/>we can <em>engineer it.</em></h2><p className="lead">From an idea on paper to a production-ready platform, Bijasa helps businesses design, build, integrate, modernize, and scale software—across industries, technologies, and business models.</p><a className="btn" href="#contact">Discuss Your Idea ↗</a></div><div><div className="discipline-grid">{['Custom software','Enterprise applications','APIs & integrations','AI & automation','Data & analytics','Cloud & reliability','Web & mobile','UX & design systems'].map((s,i)=><div key={s}><span className="mono">0{i+1}</span>{s}</div>)}</div><p className="small-copy">Have something different in mind? Not every challenge fits into a predefined category. Tell us what you’re trying to build, and we’ll explore the right engineering approach together.</p><p className="small-copy muted">Every opportunity starts with an assessment of feasibility, scope and the expertise it needs.</p></div></div></section>
-  <section className="section work-section" id="tools"><div className="container"><div className="section-heading"><div><p className="eyebrow">02 / Selected work · Bijasa-owned products</p><h2>Less promise.<br/>More working software.</h2></div><p>Real products. Real engineering decisions. Explore software we’ve designed, built and put into people’s hands.</p></div>{caseStudies.map((s,i)=><article className="product-feature" key={s.slug}><a className={`product-image product-image-${i}`} href={`/work/${s.slug}/`}><div className="browser-bar" aria-hidden="true"><span>● ● ●</span><span>{s.url.replace('https://','')}</span><span>↗</span></div><img src={s.image} alt={s.imageAlt} width="1280" height="720" loading="lazy" decoding="async"/></a><div className="product-copy"><p className="eyebrow">{i===0?'Business workflows':'Learning & practice'} / 0{i+1}</p><h3>{i===0?'Bijasa Invoicing':'Bijasa Typing'}</h3><p>{s.intro}</p><ul>{s.outcomes.slice(1).map(o=><li key={o}>{o}</li>)}</ul><p className="engineering-note"><strong>Engineering focus</strong><br/>{s.focus} · {i===0?'browser-local records and exportable backups':'multilingual keyboard layouts and offline core practice'}</p><div className="actions"><a className="text-link" href={`/work/${s.slug}/`}>Read case study →</a><a className="text-link" href={s.url} target="_blank" rel="noopener noreferrer">Try the product ↗</a></div></div></article>)}<a className="text-link" href="/work/">Explore our work →</a></div></section>
-  <section className="section industries" id="domains"><div className="container"><div className="section-heading"><div><p className="eyebrow">03 / Industries</p><h2>Different worlds.<br/>The same engineering care.</h2></div><p>We learn the context behind the code. The workflows, constraints and people that make your business different.</p></div><div className="industry-grid">{domains.map(d=><article key={d.n}><span className="mono">{d.n} <span aria-hidden="true">/</span></span><h3>{d.t}</h3><p>{d.d}</p></article>)}</div><p className="section-note">Our engineering capabilities aren’t limited to the industries listed here. Every business has unique challenges, and we approach each with the right technical solution.</p></div></section>
-  <section className="section" id="process"><div className="container"><p className="eyebrow">04 / How we work</p><h2>A clear path through<br/>complex problems.</h2><ol className="process-list">{process.map(([t,d],i)=><li key={t}><span className="process-number">0{i+1}</span><h3>{t}</h3><p>{d}</p></li>)}</ol></div></section>
-  <section className="section about-section" id="expertise"><div className="container about-layout"><div id="approach"><p className="eyebrow">05 / About Bijasa</p><h2>Deep roots.<br/><em>Long reach.</em></h2><p className="lead">We’re a software engineering company built around a simple belief: thoughtful foundations create room for bigger possibilities.</p><p>We bring product thinking, design and engineering together to solve business problems. From a focused website to a complex platform, the approach starts with understanding what matters to you.</p><a href="#contact" className="text-link">Meet us through a conversation ↗</a></div><div className="principles"><article><span className="mono">01 / CLARITY</span><h3>Understand before building.</h3><p>Make scope, tradeoffs and technical decisions visible. Keep the conversation as clear as the code.</p></article><article><span className="mono">02 / CRAFT</span><h3>Care beyond the surface.</h3><p>Accessible interfaces, maintainable systems and reliability considered from the beginning.</p></article><article><span className="mono">03 / CONTINUITY</span><h3>Build for what comes next.</h3><p>Thoughtful handovers, documentation and a practical path to ongoing support.</p></article></div></div></section>
-  <section className="section final-cta"><div className="container"><p className="eyebrow">Your next chapter</p><h2>Have an ambitious idea?<br/>Let’s engineer it.</h2><p>Whether you’re launching something new, improving an existing system, or solving a complex technical challenge, we’d love to hear about it.</p><div className="actions"><a className="btn" href="#contact">Start a Conversation ↗</a><a className="text-link" href="/work/">Explore Our Work →</a></div></div></section>
-  <section className="section contact-section" id="contact"><div className="container contact-layout"><aside><p className="eyebrow">06 / Let’s talk</p><h2>Tell us what<br/>you have in mind.</h2><p>A new product, an existing system, or a question you’re still working through. Start wherever you are.</p><a className="contact-email" href={`mailto:${CONTACT_EMAIL}`} data-track="contact_handoff" data-track-method="email_button">{CONTACT_EMAIL} ↗</a><SocialLinks/><div className="engagement-note"><h3>A way of working that fits.</h3><p>Discuss a focused discovery, a defined build, or ongoing engineering support. We’ll agree on scope and responsibilities together.</p></div></aside><ContactForm/></div></section>
- </main>;
+  return <main id="main">
+    <section className="hero" id="top">
+      <div className="container">
+        <h1>We build software for Indian shops, garages and the people who run them.</h1>
+        <p className="hero-sub">Bijasa makes its own products and builds custom software for other businesses. Every product below is real software we designed and built ourselves.</p>
+        <div className="actions">
+          <a className="btn" href="#contact">Tell us what you need</a>
+          <a className="text-link" href="#products">See all four products</a>
+        </div>
+        <ProductSwitcher />
+      </div>
+    </section>
+
+    <section className="section products" id="products">
+      <span className="anchor" id="tools" aria-hidden="true" />
+      <div className="container">
+        <h2>Our products</h2>
+        <p className="section-intro">We build our own software first. It is how we learn what small businesses actually need, and it is proof you can see before you hire us.</p>
+        <ul className="product-index">
+          {caseStudies.map(p => {
+            const external = p.url.startsWith('http');
+            return <li className={`product-row tone-${p.tone}`} key={p.slug}>
+              <div>
+                <div className="product-name"><span className="swatch" aria-hidden="true" /><h3>{p.brand}</h3></div>
+                <p className="product-for">{p.for}</p>
+              </div>
+              <div className="product-what">
+                <p>{p.intro}</p>
+                <ul>{p.outcomes.map(o => <li key={o}>{o}</li>)}</ul>
+              </div>
+              <div className="product-links">
+                <span className="product-status">{p.status}</span>
+                <a className="text-link" href={p.url} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{p.cta}</a>
+                <a className="text-link" href={`/work/${p.slug}/`}>Read the case study</a>
+              </div>
+            </li>;
+          })}
+        </ul>
+      </div>
+    </section>
+
+    <section className="section" id="capabilities">
+      <span className="anchor" id="domains" aria-hidden="true" />
+      <span className="anchor" id="expertise" aria-hidden="true" />
+      <span className="anchor" id="approach" aria-hidden="true" />
+      <div className="container services-layout">
+        <div>
+          <h2>Software built for your business</h2>
+          <p className="section-intro">The team that built these products can build yours. Bring a rough idea, a slow spreadsheet or an old system that needs replacing.</p>
+          <a className="btn btn-ghost" href="/services/">All services</a>
+        </div>
+        <dl className="service-list">
+          {caps.map(c => <div key={c.n}>
+            <dt>{serviceLinks[c.t] ? <a href={serviceLinks[c.t]}>{c.t}</a> : c.t}</dt>
+            <dd>{c.d}</dd>
+          </div>)}
+        </dl>
+      </div>
+    </section>
+
+    <section className="section process" id="process">
+      <div className="container">
+        <h2>How we work</h2>
+        <p className="section-intro">Five steps, the same for a small tool or a large system.</p>
+        <ol className="process-list">{process.map(([t, d]) => <li key={t}><h3>{t}</h3><p>{d}</p></li>)}</ol>
+      </div>
+    </section>
+
+    <section className="section" id="contact">
+      <div className="container contact-layout">
+        <aside>
+          <h2>Tell us what you need</h2>
+          <p>A new product, an old system or a question you are still working through. Start wherever you are.</p>
+          <a className="contact-email" href={`mailto:${CONTACT_EMAIL}`} data-track="contact_handoff" data-track-method="email_button">{CONTACT_EMAIL}</a>
+          <SocialLinks />
+          <div className="engagement-note">
+            <h3>Ways to work together</h3>
+            <p>A short planning project, a fixed build, or ongoing support. We agree on scope and cost before any work starts.</p>
+          </div>
+        </aside>
+        <ContactForm />
+      </div>
+    </section>
+  </main>;
 }

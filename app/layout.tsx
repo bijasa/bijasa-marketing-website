@@ -13,8 +13,15 @@ const archivo = localFont({
   variable: '--font-archivo',
 });
 
-const description = 'Custom software development, web and mobile applications, cloud platforms, and data and AI engineering by Bijasa. Deep roots. Long reach.';
-const searchTitle = 'Custom Software Development & Product Engineering | Bijasa';
+const bricolage = localFont({
+  src: '../public/fonts/bricolage-grotesque-latin-opsz-normal.woff2',
+  weight: '200 800',
+  display: 'swap',
+  variable: '--font-bricolage',
+});
+
+const description = 'Bijasa builds software for Indian shops, garages and small businesses: Bijadex shop billing, GearShift workshop software, free invoicing and typing practice, and custom software development.';
+const searchTitle = 'Software for Indian Shops, Garages and Small Businesses | Bijasa';
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -49,12 +56,12 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#18130e',
+  themeColor: '#f2f3ef',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={archivo.variable}>
+    <html lang="en" className={`${archivo.variable} ${bricolage.variable}`}>
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
       </head>
