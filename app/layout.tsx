@@ -15,7 +15,7 @@ const searchTitle = 'Custom Software Development & Product Engineering | Bijasa'
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
-    { '@type': 'Organization', '@id': 'https://bijasa.com/#organization', name: 'Bijasa', url: 'https://bijasa.com/', logo: 'https://bijasa.com/icon-512.png', email: 'hello@bijasa.com', slogan: 'Deep roots. Long reach.' },
+    { '@type': 'Organization', '@id': 'https://bijasa.com/#organization', name: 'Bijasa', url: 'https://bijasa.com/', logo: 'https://bijasa.com/icon-512.png', email: 'hello@bijasa.com', slogan: 'Deep roots. Long reach.', description: 'Bijasa is a software engineering company in Pune, India. It designs and builds web platforms, desktop and mobile apps, business systems, cloud, data and AI, and makes its own products: Bijadex, GearShift, Bijasa Invoice and Bijasa Typing.', foundingLocation: 'Pune, Maharashtra, India', sameAs: ['https://www.linkedin.com/company/bijasa/', 'https://github.com/bijasa'] },
     { '@type': 'WebSite', '@id': 'https://bijasa.com/#website', name: 'Bijasa', url: 'https://bijasa.com/', publisher: { '@id': 'https://bijasa.com/#organization' } },
   ],
 };
