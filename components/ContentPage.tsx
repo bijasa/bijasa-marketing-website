@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { TreeVignette } from './story/Sketch';
 
 export function ContentPage({ title, eyebrow, intro, children }: {
   title: string; eyebrow: string; intro: string; children: ReactNode;
@@ -6,8 +7,13 @@ export function ContentPage({ title, eyebrow, intro, children }: {
   return <>
     <main id="main" className="legal">
       <div className="legal-wrap">
-        <div className="eyebrow">{eyebrow}</div>
-        <h1 className="legal-h">{title}</h1>
+        <header className="legal-head">
+          <div>
+            <div className="eyebrow">{eyebrow}</div>
+            <h1 className="legal-h">{title}</h1>
+          </div>
+          <div className="legal-tree"><TreeVignette /></div>
+        </header>
         <p className="legal-lede">{intro}</p>
         {children}
         <section aria-label="Explore Bijasa">

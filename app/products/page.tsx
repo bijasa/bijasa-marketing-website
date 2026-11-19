@@ -1,5 +1,6 @@
 import { caseStudies } from '@/lib/case-studies';
 import { searchMetadata } from '@/lib/search-metadata';
+import { TreeVignette } from '@/components/story/Sketch';
 
 export const metadata = searchMetadata('Products Made by Bijasa',
   'Products Bijasa builds and runs itself: Bijadex desktop billing, GearShift operations software, a free invoicing platform and free typing practice.', '/products/');
@@ -16,8 +17,13 @@ export default function Products() {
   return <main id="main" className="products-page">
     <section className="pp-hero">
       <div className="container">
-        <p className="label">Products</p>
-        <h1>Things we make for ourselves.</h1>
+        <div className="pp-head">
+          <div>
+            <p className="label">Products · grown in-house</p>
+            <h1>Things we make for ourselves.</h1>
+          </div>
+          <div className="pp-tree"><TreeVignette /></div>
+        </div>
         <div className="pp-intro">
           <p>Most of our work is software for other people. Alongside it, we build and run a few products of our own. They are where we practise what we preach, and where we try an idea on ourselves before we recommend it to anyone else.</p>
           <p>They are not what we sell. If you need something built around your own work, <a href="/#contact">start a conversation</a>.</p>
@@ -51,7 +57,7 @@ export default function Products() {
       </div>
     </section>
 
-    <section className="pp-cta">
+    <section className="pp-cta blueprint">
       <div className="container">
         <h2>Need something built around your own work?</h2>
         <a className="btn btn-light" href="/#contact">Start a conversation</a>

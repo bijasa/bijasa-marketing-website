@@ -1,11 +1,13 @@
 import { CookieSettingsLink } from './CookieConsent';
 import SocialLinks from './SocialLinks';
 import { BSymbol } from './Logo';
+import { TreeVignette } from './story/Sketch';
 import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_HREF } from '@/lib/content';
 export default function SiteFooter() {
  return <footer className="site-footer">
   <div className="container footer-top">
    <a className="footer-brand" href="/" aria-label="Bijasa home"><BSymbol ink="#f3eee5"/><span>bijasa<span className="brand-dot">.</span></span></a>
+   <div className="footer-tree"><TreeVignette dark /></div>
    <p className="footer-line">Deep roots. Long reach.<br/><span>Custom software, built from the roots up.</span></p>
   </div>
   <div className="container footer-mid">

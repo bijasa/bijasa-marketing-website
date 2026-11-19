@@ -47,6 +47,49 @@ Supporting line: "Bijasa is a software engineering firm. Before we design a sing
 - No rounded colour tiles, no screenshots on the home page, no gradients, no stock imagery.
 - Motion: none beyond hover states. Reduced-motion rule kept.
 
+## v5.1: visual redesign (19 Nov 2026)
+
+Owner feedback on the first v5 build: the content is good, but the graphics and visual design were "boring, old" and did not tell the Bijasa story. The tree should run through the whole website and the philosophy should revolve around it, without making Bijasa look like a herbal brand: the tree must stay in proportion with what we do (software). Explore a hand-sketched look, as if someone had drawn the website by hand.
+
+The copy and section order are unchanged except for small labels. The visual direction above ("Visual direction") is replaced by this section.
+
+### The story, section by section
+
+| Section | Stage of the tree | Graphic |
+|---|---|---|
+| Hero | The whole tree | Hand-sketched. Above the ground (ink on paper): what grows is software: a web app, a phone, an AI chat bubble and a workflow. Below the ground (chalk on an ultramarine blueprint): the copper seed (*bija*) and six roots, which end as circuit pads labelled how the work runs, the data model, permissions, integrations, failure and recovery, tests and monitoring. Draws itself on load. The whole drawing fits on the first screen at 1440x900 and 390x844 |
+| Philosophy | Roots | Blueprint section. A chalk taproot grows down the middle as you scroll, with a glowing tip. Each belief is a card on its own side root (organic, then a circuit trace, then a pad) |
+| Sectors | Branches, the reach | Ink tree on paper. One trunk, six branches, each ending at a sector card. On small screens the tree sits above the stacked cards |
+| What we build | What grows | Each card has its own sketch: browser, phone, AI bubble, workflow (the same drawings as the hero canopy) |
+| How we work | Growth | Four panels: seed, roots, sprout, tree (bearing software), drawn in one after another |
+| Contact | Plant the seed | Blueprint section with a chalk seedling and the note "plant the seed here" pointing at the form |
+| Other pages | A small tree | Services, case studies, tools, privacy and products show a small sketched tree beside the title; the footer has a chalk one |
+
+### Why it stays in proportion
+
+The tree is the structure, the content is software. Nothing grows on it but software, the roots end in engineering (circuit pads and named foundations), and the only "nature" colours are the brand's own: ink, bone, ultramarine and copper. No greens.
+
+### Visual system
+
+- Paper above the ground: warm bone with a faint grain, ink sketches, ultramarine and copper watercolour washes.
+- Blueprint below the ground: ultramarine with a fine grid and chalk lines (philosophy and contact sections).
+- A dark section for growth (how we work) and the footer.
+- Sketch technique: SVG lines drawn twice with a slight offset, a shared turbulence filter for the hand wobble (`components/story/Sketch.tsx`, `SketchDefs` in the layout).
+- Type: Bricolage Grotesque headlines, Archivo body, and Caveat (bundled, OFL) for handwritten notes and labels, which replaces the monospace labels.
+- Cards are rounded and white on paper and frosted on the blueprint. Pill buttons; the main call to action is ultramarine.
+
+### Motion
+
+- The hero and the small page trees draw themselves on load (CSS only).
+- `components/story/StoryMotion.tsx` (about 1 kB, no library): adds `is-in` to sections as they enter the viewport, so their lines draw in, and drives the taproot growth from scroll position.
+- Without JavaScript, or with reduced motion, every drawing shows complete and nothing moves.
+
+### Verification (v5.1)
+
+- `npm run typecheck` passed. Analytics: 15 pass. Contact: 10 pass. `npm run build` passed (15 pages).
+- Playwright at 390 and 1440 px on `/`, `/products/` and `/services/`: no horizontal overflow.
+- Screenshots (JPEG) in `docs/v5-screenshots/`: `home-desktop-fold`, `home-desktop`, `home-mobile-fold`, `home-mobile`, mid-scroll animation frames `scroll-philosophy-desktop`, `scroll-philosophy-mobile`, `scroll-sectors-desktop`, `scroll-process-desktop`, and `products-desktop`, `products-mobile`, `services-desktop`. Full-page shots are taken with reduced motion so every drawing is complete.
+
 ## Factual guard rails
 
 No client names, testimonials, logos, results, numbers, years in business or awards. Sectors are written as "Bijasa works across" and describe what matters in each sector, not past projects. Capabilities, process and philosophy only.
@@ -67,3 +110,5 @@ Contact form wiring and modes, analytics (adds `/products` to the safe route lis
 
 - Owner review of the philosophy copy, the six sector descriptions and the products page wording.
 - The contact form shows "Local review mode" on localhost, as before. On bijasa.com it shows the email hand-off.
+- Owner review of the sketch style. The drawings are code (SVG), so a real illustrator's hand-drawn artwork could replace them later with the same layout.
+- Check scroll performance on a low-end phone (the sketch filter is applied to the drawings).

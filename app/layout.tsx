@@ -5,6 +5,7 @@ import './globals.css';
 import './studio.css';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
+import { SketchDefs } from '@/components/story/Sketch';
 
 const archivo = localFont({
   src: '../public/fonts/archivo-latin-wght-normal.woff2',
@@ -18,6 +19,13 @@ const bricolage = localFont({
   weight: '200 800',
   display: 'swap',
   variable: '--font-bricolage',
+});
+
+const caveat = localFont({
+  src: '../public/fonts/caveat-latin-wght-normal.woff2',
+  weight: '400 700',
+  display: 'swap',
+  variable: '--font-caveat',
 });
 
 const description = 'Bijasa is a software engineering firm. We build custom web apps, mobile apps, AI applications and business software from the roots up, across fintech, healthcare, logistics, climate, commerce and education.';
@@ -61,11 +69,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${bricolage.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${bricolage.variable} ${caveat.variable}`}>
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
       </head>
       <body>
+        <SketchDefs />
         <SiteHeader />
         {children}
         <SiteFooter />
