@@ -4,11 +4,13 @@
 
 ## Company facts
 
-- Name: Bijasa. Website: https://bijasa.com. Email: hello@bijasa.com.
+- Name: Bijasa. Website: https://bijasa.com. Email: hello@bijasa.com. Phone: +91 88061 09348.
 - Location: Pune, Maharashtra, India. Works with clients remotely and in person.
 - Official profiles: LinkedIn https://www.linkedin.com/company/bijasa/ and GitHub https://github.com/bijasa.
 - Services: custom software development, web and mobile app development, desktop applications, cloud platforms and DevOps, data engineering and AI, UI/UX design, maintenance and support.
-- How Bijasa works: listen, plan, build, test, then launch and support. Clients see working software early, and scope and cost are agreed before work starts.
+- Philosophy: software built from the roots up. Bijasa learns how the work really runs and settles the foundations (data model, permissions, integrations, failure cases, tests) before the screens, so software can last, change and grow.
+- Sectors Bijasa works across: fintech and payments, healthcare, logistics and supply chain, climate and energy, commerce and retail, education.
+- How Bijasa works: understand, shape, build, grow. Clients see working software early, and scope and cost are agreed before work starts.
 
 ## Products made by Bijasa
 
@@ -21,6 +23,7 @@
 
 - [Home](https://bijasa.com/)
 - [Services](https://bijasa.com/services/)
+- [Products](https://bijasa.com/products/)
 - [Product case studies](https://bijasa.com/work/)
 - [Free tools](https://bijasa.com/tools/)
 - [Contact](https://bijasa.com/#contact)

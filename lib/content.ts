@@ -1,4 +1,16 @@
 export const CONTACT_EMAIL = 'hello@bijasa.com';
+export const CONTACT_PHONE = '+91 88061 09348';
+export const CONTACT_PHONE_HREF = 'tel:+918806109348';
+
+/** Sectors Bijasa works across. Written as what matters in each sector, never as past client work. */
+export const sectors = [
+  { t: 'Fintech and payments', d: 'Money has to add up every time. Ledgers that reconcile, audit trails a reviewer can follow, and onboarding that is careful without being slow.' },
+  { t: 'Healthcare', d: 'Privacy by default, records that stay correct, and interfaces for people who have no time to spare and no room for a wrong click.' },
+  { t: 'Logistics and supply chain', d: 'Live status across many moving parts, and tools that keep working on the road, on a warehouse floor and on a weak network.' },
+  { t: 'Climate and energy', d: 'Measurement people can trust: data from meters, sensors and suppliers, cleaned and traced, and reporting that stands up to scrutiny.' },
+  { t: 'Commerce and retail', d: 'Catalogue, orders, payments and stock that stay in step across every channel, including on the busiest day of the year.' },
+  { t: 'Education', d: 'Learning software that is accessible, works for large and varied audiences, and shows progress honestly.' },
+];
 
 export const domains = [
   { n: '01', t: 'Fintech & payments', d: 'Ledgers, onboarding, compliance-heavy flows.' },

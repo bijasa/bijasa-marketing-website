@@ -13,6 +13,7 @@ const routes: Record<string, string> = {
   '/services/web-mobile-development': 'Web and mobile development',
   '/services/cloud-platforms-devops': 'Cloud platforms and DevOps',
   '/services/data-engineering-ai': 'Data engineering and AI',
+  '/products': 'Products',
   '/work': 'Product case studies',
   '/work/invoicing-platform': 'Invoicing platform case study',
   '/work/typing-practice': 'Typing practice case study',

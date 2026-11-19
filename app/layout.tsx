@@ -20,12 +20,12 @@ const bricolage = localFont({
   variable: '--font-bricolage',
 });
 
-const description = 'Bijasa is a software engineering company. We design and build web platforms, desktop and mobile apps, business systems, cloud, data and AI, from idea to launch.';
-const searchTitle = 'Bijasa | Software Engineering, From Idea to Launch';
+const description = 'Bijasa is a software engineering firm. We build custom web apps, mobile apps, AI applications and business software from the roots up, across fintech, healthcare, logistics, climate, commerce and education.';
+const searchTitle = 'Bijasa | Custom Software, Built From the Roots Up';
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
-    { '@type': 'Organization', '@id': 'https://bijasa.com/#organization', name: 'Bijasa', url: 'https://bijasa.com/', logo: 'https://bijasa.com/icon-512.png', email: 'hello@bijasa.com', slogan: 'Deep roots. Long reach.', description: 'Bijasa is a software engineering company in Pune, India. It designs and builds web platforms, desktop and mobile apps, business systems, cloud, data and AI, and makes its own products: Bijadex, GearShift, Bijasa Invoice and Bijasa Typing.', foundingLocation: 'Pune, Maharashtra, India', sameAs: ['https://www.linkedin.com/company/bijasa/', 'https://github.com/bijasa'] },
+    { '@type': 'Organization', '@id': 'https://bijasa.com/#organization', name: 'Bijasa', url: 'https://bijasa.com/', logo: 'https://bijasa.com/icon-512.png', email: 'hello@bijasa.com', telephone: '+91-88061-09348', slogan: 'Deep roots. Long reach.', description: 'Bijasa is a software engineering company in Pune, India. It designs and builds web platforms, desktop and mobile apps, business systems, cloud, data and AI, and makes its own products: Bijadex, GearShift, Bijasa Invoice and Bijasa Typing.', foundingLocation: 'Pune, Maharashtra, India', sameAs: ['https://www.linkedin.com/company/bijasa/', 'https://github.com/bijasa'] },
     { '@type': 'WebSite', '@id': 'https://bijasa.com/#website', name: 'Bijasa', url: 'https://bijasa.com/', publisher: { '@id': 'https://bijasa.com/#organization' } },
   ],
 };
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#ffffff',
+  themeColor: '#f3eee5',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
