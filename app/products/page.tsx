@@ -57,7 +57,7 @@ export default function Products() {
       </div>
     </section>
 
-    <section className="pp-cta blueprint">
+    <section className="pp-cta dark">
       <div className="container">
         <h2>Need something built around your own work?</h2>
         <a className="btn btn-light" href="/#contact">Start a conversation</a>
