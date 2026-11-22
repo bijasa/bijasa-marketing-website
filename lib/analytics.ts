@@ -165,6 +165,7 @@ const campaignLinks: Record<string, readonly [string, string, string]> = {
   delivery_check: ['qa', 'internal_test', 'bijasa_analytics_qa'],
   internships_linkedin: ['linkedin', 'organic_social', 'bijasa_internships'],
   internships_aicte: ['aicte', 'referral', 'bijasa_internships'],
+  internships_instagram: ['instagram', 'organic_social', 'bijasa_internships'],
   company_linkedin: ['linkedin', 'organic_social', 'bijasa_brand'],
 };
 const campaignStorageKey = 'bj-campaign.v1';

@@ -32,6 +32,7 @@ V2 uses `contact_handoff` for Gmail, Outlook, mail app, copy and fixed email act
 - New `internship_link` (`placement`: home_hero, home_build, careers_page, other_page) and `internship_apply` (`role`: software, marketing). `internship_apply` is a mail-compose handoff, not a confirmed application.
 - New campaign tuples (use exactly):
   - `?utm_source=linkedin&utm_medium=organic_social&utm_campaign=bijasa_internships&utm_content=internships_linkedin`
+  - `?utm_source=instagram&utm_medium=organic_social&utm_campaign=bijasa_internships&utm_content=internships_instagram`
   - `?utm_source=aicte&utm_medium=referral&utm_campaign=bijasa_internships&utm_content=internships_aicte`
   - `?utm_source=linkedin&utm_medium=organic_social&utm_campaign=bijasa_brand&utm_content=company_linkedin`
 - GA4 admin: mark `contact_handoff`, `generate_lead` and `internship_apply` as key events; register custom dimensions `placement`, `role`, `case_study`, `entry_point`, `source_product` (event scope).
