@@ -15,7 +15,7 @@ const principles = {
   ],
   reach: [
     ['Use proven tools, and new ones when they earn it', 'Boring technology where reliability matters. AI and newer tools where they measurably help, with a person in the loop wherever a wrong answer would cost something.'],
-    ['Build it so others can own it', 'Readable code, written decisions and a handover your own team can run with. You should never need us just to understand what you have.'],
+    ['Build it so others can run it', 'Readable code, written decisions and a handover your own team can run with. You should never need us just to understand what you have.'],
     ['Stay for what comes after launch', 'Launch is the first day people depend on the software. We watch how it is used, fix what gets in the way and help it grow with you.'],
   ],
 } as const;
@@ -27,7 +27,7 @@ const builds = [
   { art: 'flow', t: 'Business software', d: 'The systems a team runs on every day: workflows, approvals, records, billing and the integrations between them.', e: ['Operations systems', 'Workflow automation', 'Replacing spreadsheets'] },
 ] as const;
 
-const tables = ['understand_the_work', 'decide_hard_things_early', 'show_working_software', 'proven_tools', 'others_can_own_it', 'stay_after_launch'];
+const tables = ['understand_the_work', 'decide_hard_things_early', 'show_working_software', 'proven_tools', 'others_can_run_it', 'stay_after_launch'];
 const branchNames = ['fintech', 'healthcare', 'logistics', 'climate-energy', 'commerce', 'education'];
 
 const steps = [
@@ -94,6 +94,7 @@ export default function Home() {
               })}
             </ol>
           </div>
+          <p className="blog-note"><span className="hand-note">from the blog</span><a href="/blog/how-we-build/" data-track="blog_link" data-track-placement="home_philosophy">Most software fails before the first line of code. Read how we build instead →</a></p>
         </div>
       </section>
 

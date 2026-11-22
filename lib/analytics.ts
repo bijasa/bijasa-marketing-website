@@ -37,6 +37,7 @@ const rules: Record<string, Record<string, readonly string[]>> = {
   enquiry_cta_click: { entry_point: ['home', 'services', 'tools', 'case_study', 'products', 'careers', 'blog', 'other'] },
   internship_link: { placement: ['home_hero', 'home_build', 'careers_page', 'other_page'] },
   internship_apply: { role: ['software', 'marketing'] },
+  blog_link: { placement: ['home_philosophy'] },
   contact_start: {}, contact_form_ready: {},
   contact_handoff: { method: ['gmail', 'outlook', 'mail_app', 'copy', 'email_button'] },
   generate_lead: { method: ['endpoint'] },

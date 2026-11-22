@@ -29,6 +29,7 @@ V2 uses `contact_handoff` for Gmail, Outlook, mail app, copy and fixed email act
 - Routes added: `/careers`, `/careers/internships`, `/work/bijadex`, `/work/gearshift` (they reported as `/other` before).
 - `case_study_open` / `case_study_view` accept `bijadex` and `gearshift`.
 - `enquiry_cta_click.entry_point` adds `products` and `careers`.
+- New `blog_link` (`placement`: home_philosophy).
 - New `internship_link` (`placement`: home_hero, home_build, careers_page, other_page) and `internship_apply` (`role`: software, marketing). `internship_apply` is a mail-compose handoff, not a confirmed application.
 - New campaign tuples (use exactly):
   - `?utm_source=linkedin&utm_medium=organic_social&utm_campaign=bijasa_internships&utm_content=internships_linkedin`

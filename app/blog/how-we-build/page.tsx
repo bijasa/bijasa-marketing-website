@@ -13,7 +13,7 @@ const questions = [
   ['What will you decide in the first two weeks?', 'Listen for the data model, roles and permissions, integrations and failure cases. If you only hear "screens", be careful.'],
   ['When will I see working software on real data?', 'Weeks, not months. A clickable mock-up is useful, but it is not the same thing.'],
   ['Where will you use AI, and where will you not?', 'A good team can say both. "Everywhere" is not an answer.'],
-  ['What will I get at handover?', 'Source code you own, written decisions, and enough documentation for another team to take over.'],
+  ['Who will own the code, and what will I get at handover?', 'Clear, written terms on who owns the source code, plus the decisions and documentation another team would need to take over.'],
   ['What happens in the month after launch?', 'Someone should be watching how the software is used and fixing what gets in the way.'],
   ['Can I see something you built and still run?', 'The best evidence of how a team builds is software it has to live with itself.'],
 ] as const;
@@ -85,8 +85,8 @@ export default function HowWeBuild() {
         <h3><span>04</span> Use proven tools, and new ones when they earn it</h3>
         <p>Boring technology where reliability matters. AI where it measurably helps: search, reading documents, sorting and drafting. Wherever a wrong answer would cost money or trust, a person stays in the loop. We test AI features against real tasks before we ship them, not against a demo.</p>
 
-        <h3><span>05</span> Build it so others can own it</h3>
-        <p>Readable code, written decisions and a handover your own team can run with. You own the source code. You should never need us just to understand what you have, and another team should be able to pick it up without starting again.</p>
+        <h3><span>05</span> Build it so others can run it</h3>
+        <p>Readable code, written decisions and a handover your own team can run with. Who owns the source code is agreed in writing before work starts: some clients take full ownership, others prefer that we keep and maintain it. Either way, you should never need us just to understand what you have.</p>
 
         <h3><span>06</span> Stay for what comes after launch</h3>
         <p>Launch is not the finish line. It is the first day people depend on the software. We watch how it is used, fix what gets in the way and help it grow as your work changes.</p>
