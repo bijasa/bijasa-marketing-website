@@ -244,8 +244,8 @@ main { min-width: 0; overflow-x: clip; }
 .contact-direct > div { display: grid; grid-template-columns: 70px minmax(0, 1fr); align-items: baseline; padding: 8px 0; border-bottom: 1px dashed var(--line-strong); }
 .contact-direct dt { font: 600 13px var(--mono); color: var(--copper-dp); }
 .contact-direct dd { margin: 0; }
-.contact-email, .contact-phone { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--display); font-size: clamp(22px, 2.2vw, 28px); font-weight: 600; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
-.contact-email:hover, .contact-phone:hover { color: var(--copper-dp); text-decoration: underline; text-decoration-color: var(--copper); }
+.contact-email { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--display); font-size: clamp(22px, 2.2vw, 28px); font-weight: 600; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+.contact-email:hover { color: var(--copper-dp); text-decoration: underline; text-decoration-color: var(--copper); }
 .social-links { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .social-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 15px; color: var(--ink-2); text-decoration: none; }
 .social-links a:hover { color: var(--copper-dp); }

@@ -1,6 +1,4 @@
 export const CONTACT_EMAIL = 'hello@bijasa.com';
-export const CONTACT_PHONE = '+91 88061 09348';
-export const CONTACT_PHONE_HREF = 'tel:+918806109348';
 
 /** Sectors Bijasa works across. Written as what matters in each sector, never as past client work. */
 export const sectors = [

@@ -3,7 +3,7 @@ import ContactForm from '@/components/ContactForm';
 import SocialLinks from '@/components/SocialLinks';
 import StoryMotion from '@/components/story/StoryMotion';
 import { HeroTree, TaprootBend, SpineLine, SchemaRoots, schemaGeom, BranchGraph, CanopyStrip, BuildArt, GrowthRings, PlantTerminal } from '@/components/story/Sketch';
-import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_HREF, sectors } from '@/lib/content';
+import { CONTACT_EMAIL, sectors } from '@/lib/content';
 
 export const metadata: Metadata = { title: 'Bijasa | Custom Software, Built From the Roots Up', alternates: { canonical: 'https://bijasa.com/' } };
 
@@ -55,7 +55,7 @@ export default function Home() {
           <p className="hero-sub">Before we design a single screen, we learn how the work really happens and build the structure underneath it: the data, the rules, the connections. That is what lets software last, change and grow.</p>
           <div className="hero-act">
             <a className="btn btn-primary" href="#contact">Start a conversation</a>
-            <p className="hero-direct">Or write to <a href={`mailto:${CONTACT_EMAIL}`} data-track="contact_handoff" data-track-method="email_button">{CONTACT_EMAIL}</a><br />Call <a href={CONTACT_PHONE_HREF}>{CONTACT_PHONE}</a></p>
+            <p className="hero-direct">Or write to <a href={`mailto:${CONTACT_EMAIL}`} data-track="contact_handoff" data-track-method="email_button">{CONTACT_EMAIL}</a></p>
           </div>
           <a className="hero-intern" href="/careers/internships/" data-track="internship_link" data-track-method="home_hero"><b>students</b>Internships are open. Apply now →</a>
         </div>
@@ -168,7 +168,6 @@ export default function Home() {
             <div className="terminal" data-reveal><PlantTerminal /></div>
             <dl className="contact-direct">
               <div><dt>email</dt><dd><a className="contact-email" href={`mailto:${CONTACT_EMAIL}`} data-track="contact_handoff" data-track-method="email_button">{CONTACT_EMAIL}</a></dd></div>
-              <div><dt>phone</dt><dd><a className="contact-phone" href={CONTACT_PHONE_HREF}>{CONTACT_PHONE}</a></dd></div>
             </dl>
             <SocialLinks />
             <div className="engagement-note">
