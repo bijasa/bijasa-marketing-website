@@ -181,6 +181,7 @@ main { min-width: 0; overflow-x: clip; }
 .dark h2, .dark h3, .dark h4 { color: var(--bone); }
 .dark .sec-lede, .dark p { color: var(--on-dark); }
 .dark a { color: var(--bone); }
+.dark a.btn-light { color: var(--ink); }
 
 /* ---------- Philosophy: the roots as a data model ---------- */
 .schema { position: relative; margin-top: clamp(48px, 6vw, 80px); margin-left: calc(var(--rail-x) - var(--rail)); aspect-ratio: 1236 / 760; }
