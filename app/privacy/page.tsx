@@ -1,12 +1,9 @@
-import type { Metadata } from 'next';
+import { searchMetadata } from '@/lib/search-metadata';
 import { CookieSettingsLink } from '@/components/CookieConsent';
 import { CONTACT_EMAIL } from '@/lib/content';
 
-export const metadata: Metadata = {
-  title: 'Privacy policy — Bijasa',
-  description: 'How bijasa.com handles your data: contact enquiries, cookies and Google Analytics.',
-  alternates: { canonical: '/privacy/' },
-};
+export const metadata = searchMetadata('Privacy Policy',
+  'How bijasa.com handles your data: contact enquiries, cookies and Google Analytics.', '/privacy/');
 
 const UPDATED = '4 November 2026';
 

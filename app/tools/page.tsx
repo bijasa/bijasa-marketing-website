@@ -13,7 +13,7 @@ export default function Tools() {
       <p>A free invoice maker for freelancers, studios and small businesses. Prepare invoices, quotations and other supported business documents, add your branding, and export a PDF. No signup or subscription is required; invoice records stay in your browser on your device.</p>
       <p>The platform helps prepare documents from the details you supply. It does not verify your business tax status, generate an IRN or file government returns. Keep backups of your locally stored records.</p>
       <p><a href="https://invoicing.bijasa.com/">Open the free invoicing platform</a> · <a href="/work/invoicing-platform/">Read the product case study</a></p>
-      <p><a href="https://invoicing.bijasa.com/gst-invoice-generator">GST invoice guide</a> · <a href="https://invoicing.bijasa.com/invoice-for-freelancers">Invoices for freelancers</a> · <a href="https://invoicing.bijasa.com/faq">Invoicing questions</a></p>
+      <p><a href="https://invoicing.bijasa.com/gst-invoice-generator/">GST invoice guide</a> · <a href="https://invoicing.bijasa.com/invoice-for-freelancers/">Invoices for freelancers</a> · <a href="https://invoicing.bijasa.com/faq/">Invoicing questions</a></p>
     </section>
     <section>
       <h2><a href="https://typing.bijasa.com/">Bijasa Typing</a></h2>

@@ -192,7 +192,7 @@ export const caseStudies = [
       },
       {
         "label": "Review the product FAQ",
-        "href": "https://invoicing.bijasa.com/faq"
+        "href": "https://invoicing.bijasa.com/faq/"
       }
     ],
     "relatedService": "/services/web-mobile-development/",

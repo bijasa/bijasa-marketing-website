@@ -26,4 +26,6 @@
 - [Products](https://bijasa.com/products/)
 - [Product case studies](https://bijasa.com/work/)
 - [Free tools](https://bijasa.com/tools/)
+- [Careers](https://bijasa.com/careers/)
+- [Internships](https://bijasa.com/careers/internships/): remote, unpaid internships for students in software development and marketing. No fee is charged. Listed on the AICTE National Internship Portal.
 - [Contact](https://bijasa.com/#contact)

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { BSymbol } from './Logo';
 import SocialLinks from './SocialLinks';
-const links = [['Philosophy','/#philosophy'],['Sectors','/#sectors'],['Services','/services/'],['Products','/products/'],['Contact','/#contact']];
+const links = [['Philosophy','/#philosophy'],['Sectors','/#sectors'],['Services','/services/'],['Products','/products/'],['Careers','/careers/'],['Contact','/#contact']];
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const path = usePathname();

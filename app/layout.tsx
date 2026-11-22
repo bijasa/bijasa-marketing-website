@@ -28,7 +28,7 @@ const caveat = localFont({
   variable: '--font-caveat',
 });
 
-const description = 'Bijasa is a software engineering firm. We build custom web apps, mobile apps, AI applications and business software from the roots up, across fintech, healthcare, logistics, climate, commerce and education.';
+const description = 'Bijasa is a software engineering firm. We build custom web apps, mobile apps, AI applications and business software, from the roots up, for any sector.';
 const searchTitle = 'Bijasa | Custom Software, Built From the Roots Up';
 const structuredData = {
   '@context': 'https://schema.org',
@@ -49,14 +49,14 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-touch-icon.png',
   },
-  twitter: { card: 'summary', title: searchTitle, description, images: ['/icon-512.png'] },
+  twitter: { card: 'summary_large_image', title: searchTitle, description, images: ['/og-image.png'] },
   robots: { index: true, follow: true },
   openGraph: {
     title: searchTitle,
     description,
     url: 'https://bijasa.com',
     siteName: 'Bijasa',
-    images: [{ url: '/icon-512.png', width: 512, height: 512 }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Bijasa: software, built from the roots up' }],
     type: 'website',
   },
 };

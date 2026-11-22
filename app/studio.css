@@ -354,6 +354,31 @@ main { min-width: 0; overflow-x: clip; }
 .consent-b .btn { min-height: 46px; padding: 10px 22px; font-size: 15px; }
 
 /* ---------- Responsive ---------- */
+
+/* Careers and internships (v6.1) */
+.crumbs { margin: 0 0 18px; font-size: 14px; color: var(--ink-3); }
+.legal .crumbs a { font-weight: 500; color: var(--ink-2); }
+.intern-cta { margin: -24px 0 8px; }
+.legal h3 { margin: 22px 0 6px; font-size: 18px; font-weight: 650; }
+.legal ul, .legal ol { padding-left: 1.2em; }
+.legal a.btn { color: var(--bone); }
+.legal a.btn:hover, .legal a.btn-primary { color: var(--ink); }
+.legal a.btn-primary:hover, .legal a.btn-ghost:hover { color: var(--bone); }
+.legal a.btn-ghost { color: var(--ink); }
+.intern-seats { margin: 0 0 4px; font-family: var(--hand); font-size: 24px; color: var(--copper-dp); }
+.intern-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px 28px; margin: 18px 0 0; }
+.intern-facts div { border-top: 1.5px solid var(--ink); padding-top: 10px; }
+.intern-facts dt { font-family: var(--mono, ui-monospace, monospace); font-size: 13px; text-transform: lowercase; color: var(--copper-dp); }
+.intern-facts dd { margin: 4px 0 0; color: var(--ink); font-weight: 550; line-height: 1.45; }
+.intern-faq div + div { margin-top: 18px; }
+.intern-faq dt { font-weight: 650; color: var(--ink); }
+.intern-faq dd { margin: 4px 0 0; color: var(--ink-2); line-height: 1.7; }
+.intern-apply { background: var(--bone-2) !important; }
+.hero-intern { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 6px 14px; border: 1.5px solid var(--ink); border-radius: 999px; background: var(--card); box-shadow: 3px 3px 0 var(--ink); font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; }
+.hero-intern:hover { background: var(--copper); }
+.hero-intern b { font-family: var(--mono, ui-monospace, monospace); font-size: 12px; font-weight: 600; color: var(--copper-dp); }
+.hero-intern:hover b { color: var(--ink); }
+
 @media (max-width: 1299px) {
   .schema { aspect-ratio: auto; margin-left: 0; }
   .schema-art { display: none; }
