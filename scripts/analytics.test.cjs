@@ -175,3 +175,21 @@ test('handoffs never emit confirmed lead events and service exploration is allow
   assert.equal(events.filter(x => x[1] === 'generate_lead').length, 1);
   assert.ok(!JSON.stringify(events).includes('PrivateCanary'));
 });
+test('careers pages, internship events and new case studies use fixed enums', () => {
+  const h = setup({ consent: 'granted' });
+  h.a.trackPage('/careers/internships/');
+  h.a.track('internship_apply', { role: 'software', email: 'PrivateCanary' });
+  h.a.track('internship_apply', { role: 'PrivateCanary' });
+  h.a.track('internship_link', { placement: 'home_hero' });
+  h.window.location.pathname = '/careers/';
+  h.a.trackLink('/careers/internships/?x=PrivateCanary');
+  h.a.trackLink('/work/bijadex/');
+  const body = JSON.stringify(h.queue());
+  const events = h.queue().filter(x => x[0] === 'event');
+  assert.ok(body.includes('https://bijasa.com/careers/internships'));
+  assert.ok(events.some(x => x[1] === 'internship_apply' && x[2].role === 'software'));
+  assert.ok(events.some(x => x[1] === 'internship_link' && x[2].placement === 'home_hero'));
+  assert.ok(events.some(x => x[1] === 'internship_link' && x[2].placement === 'careers_page'));
+  assert.ok(events.some(x => x[1] === 'case_study_open' && x[2].case_study === 'bijadex'));
+  assert.ok(!body.includes('PrivateCanary'));
+});

@@ -14,19 +14,27 @@ const routes: Record<string, string> = {
   '/services/cloud-platforms-devops': 'Cloud platforms and DevOps',
   '/services/data-engineering-ai': 'Data engineering and AI',
   '/products': 'Products',
+  '/careers': 'Careers',
+  '/careers/internships': 'Internships',
   '/work': 'Product case studies',
   '/work/invoicing-platform': 'Invoicing platform case study',
   '/work/typing-practice': 'Typing practice case study',
+  '/work/bijadex': 'Bijadex case study',
+  '/work/gearshift': 'GearShift case study',
 };
 const studies: Record<string, string> = {
   '/work/invoicing-platform': 'invoicing_platform', '/work/typing-practice': 'typing_practice',
+  '/work/bijadex': 'bijadex', '/work/gearshift': 'gearshift',
 };
+const STUDY_IDS = ['invoicing_platform', 'typing_practice', 'bijadex', 'gearshift'] as const;
 const rules: Record<string, Record<string, readonly string[]>> = {
   nav_click: { section: ['tools', 'domains', 'capabilities', 'expertise', 'contact'] },
   tool_open: { tool: ['invoicing', 'typing'] },
-  case_study_open: { case_study: ['invoicing_platform', 'typing_practice'] },
-  case_study_view: { case_study: ['invoicing_platform', 'typing_practice'] },
-  enquiry_cta_click: { entry_point: ['home', 'services', 'tools', 'case_study', 'other'] },
+  case_study_open: { case_study: STUDY_IDS },
+  case_study_view: { case_study: STUDY_IDS },
+  enquiry_cta_click: { entry_point: ['home', 'services', 'tools', 'case_study', 'products', 'careers', 'other'] },
+  internship_link: { placement: ['home_hero', 'home_build', 'careers_page', 'other_page'] },
+  internship_apply: { role: ['software', 'marketing'] },
   contact_start: {}, contact_form_ready: {},
   contact_handoff: { method: ['gmail', 'outlook', 'mail_app', 'copy', 'email_button'] },
   generate_lead: { method: ['endpoint'] },
@@ -155,6 +163,9 @@ const campaignLinks: Record<string, readonly [string, string, string]> = {
   educator_review: ['direct_outreach', 'email', 'bijasa_tools_launch'],
   project_examples: ['direct_outreach', 'email', 'bijasa_tools_launch'],
   delivery_check: ['qa', 'internal_test', 'bijasa_analytics_qa'],
+  internships_linkedin: ['linkedin', 'organic_social', 'bijasa_internships'],
+  internships_aicte: ['aicte', 'referral', 'bijasa_internships'],
+  company_linkedin: ['linkedin', 'organic_social', 'bijasa_brand'],
 };
 const campaignStorageKey = 'bj-campaign.v1';
 let campaignChoice: string | null = null;
@@ -236,10 +247,14 @@ export function trackLink(href: string) {
   const service = path.split('/')[2];
   if (path.startsWith('/services/') && ['web-mobile-development', 'cloud-platforms-devops', 'data-engineering-ai'].includes(service)) track('service_explore', { service });
   if (Object.hasOwn(studies, path)) track('case_study_open', { case_study: studies[path] });
+  const current = safeAnalyticsPage(window.location.pathname).path;
+  if (path === '/careers/internships' && current !== path) {
+    track('internship_link', { placement: current === '/careers' ? 'careers_page' : 'other_page' });
+  }
   if (path === '/' && url.hash === '#contact') {
-    const current = safeAnalyticsPage(window.location.pathname).path;
     const entry = current === '/' ? 'home' : current.startsWith('/work/') ? 'case_study'
-      : current.startsWith('/services') ? 'services' : current === '/tools' ? 'tools' : 'other';
+      : current.startsWith('/services') ? 'services' : current === '/tools' ? 'tools'
+      : current === '/products' ? 'products' : current.startsWith('/careers') ? 'careers' : 'other';
     track('enquiry_cta_click', { entry_point: entry });
   }
 }

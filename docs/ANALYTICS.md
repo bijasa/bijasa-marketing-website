@@ -23,3 +23,16 @@ After consent only, the collector accepts the complete fixed source/medium/campa
 
 ## V2 local changes
 V2 uses `contact_handoff` for Gmail, Outlook, mail app, copy and fixed email actions. `generate_lead` is reserved for an approved endpoint's confirmed acceptance (`method: endpoint`); local mocks never emit it. Update any GA reports using the old handoff interpretation before release. Service detail clicks emit `service_explore` with a fixed slug. CTA, product and case study tracking still uses delegated safe link inspection. No booking URL exists, so booking tracking awaits a verified URL.
+
+## v6.1 changes, 22 November 2026
+
+- Routes added: `/careers`, `/careers/internships`, `/work/bijadex`, `/work/gearshift` (they reported as `/other` before).
+- `case_study_open` / `case_study_view` accept `bijadex` and `gearshift`.
+- `enquiry_cta_click.entry_point` adds `products` and `careers`.
+- New `internship_link` (`placement`: home_hero, home_build, careers_page, other_page) and `internship_apply` (`role`: software, marketing). `internship_apply` is a mail-compose handoff, not a confirmed application.
+- New campaign tuples (use exactly):
+  - `?utm_source=linkedin&utm_medium=organic_social&utm_campaign=bijasa_internships&utm_content=internships_linkedin`
+  - `?utm_source=aicte&utm_medium=referral&utm_campaign=bijasa_internships&utm_content=internships_aicte`
+  - `?utm_source=linkedin&utm_medium=organic_social&utm_campaign=bijasa_brand&utm_content=company_linkedin`
+- GA4 admin: mark `contact_handoff`, `generate_lead` and `internship_apply` as key events; register custom dimensions `placement`, `role`, `case_study`, `entry_point`, `source_product` (event scope).
+- IndexNow key file: `public/ad687ccda659dfa3b913022a2f683365.txt`. Ping after each release.

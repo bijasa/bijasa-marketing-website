@@ -57,7 +57,7 @@ export default function Home() {
             <a className="btn btn-primary" href="#contact">Start a conversation</a>
             <p className="hero-direct">Or write to <a href={`mailto:${CONTACT_EMAIL}`} data-track="contact_handoff" data-track-method="email_button">{CONTACT_EMAIL}</a></p>
           </div>
-          <a className="hero-intern" href="/careers/internships/" data-track="internship_link" data-track-method="home_hero"><b>students</b>Internships are open. Apply now →</a>
+          <a className="hero-intern" href="/careers/internships/" data-track="internship_link" data-track-placement="home_hero"><b>students</b>Internships are open. Apply now →</a>
         </div>
         <figure className="hero-figure"><HeroTree /></figure>
       </div>
@@ -135,7 +135,7 @@ export default function Home() {
             <p>Underneath all of it: cloud platforms, data pipelines and delivery practices that keep software running. <a href="/services/">See all services</a></p>
           </div>
           <p className="products-note" id="products"><span className="anchor" id="tools" aria-hidden="true" />We also build and run a few products of our own. <a href="/products/">See our products</a></p>
-          <p className="products-note" id="internships">Students: we run remote internships in software development and marketing. <a href="/careers/internships/">See internships and apply</a></p>
+          <p className="products-note" id="internships">Students: we run remote internships in software development and marketing. <a href="/careers/internships/" data-track="internship_link" data-track-placement="home_build">See internships and apply</a></p>
         </div>
       </section>
 

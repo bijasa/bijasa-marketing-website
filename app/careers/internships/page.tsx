@@ -132,7 +132,7 @@ export default function Internships() {
         <ul>{r.work.map(w => <li key={w}>{w}</li>)}</ul>
         <h3>Good to have</h3>
         <ul>{r.skills.map(s => <li key={s}>{s}</li>)}</ul>
-        <p><a className="btn" href={applyHref(r.title)} data-track="internship_apply" data-track-method={r.id}>Apply for this role</a></p>
+        <p><a className="btn" href={applyHref(r.title)} data-track="internship_apply" data-track-role={r.id.startsWith('software') ? 'software' : 'marketing'}>Apply for this role</a></p>
       </section>)}
 
       <section aria-labelledby="how-h">
@@ -148,10 +148,10 @@ export default function Internships() {
 
       <section id="apply" aria-labelledby="apply-h" className="intern-apply">
         <h2 id="apply-h">Apply</h2>
-        <p>Send your resume (PDF) and a few lines about yourself to <a href={applyHref('Software Development Intern')} data-track="internship_apply" data-track-method="email_link">{CONTACT_EMAIL}</a>. Put the role in the subject. We reply to every application, usually within a week.</p>
+        <p>Send your resume (PDF) and a few lines about yourself to <a href={applyHref('Software Development Intern')} data-track="internship_apply" data-track-role="software">{CONTACT_EMAIL}</a>. Put the role in the subject. We reply to every application, usually within a week.</p>
         <div className="actions">
-          <a className="btn btn-primary" href={applyHref('Software Development Intern')} data-track="internship_apply" data-track-method="software">Apply: software</a>
-          <a className="btn btn-ghost" href={applyHref('Marketing and Business Development Intern')} data-track="internship_apply" data-track-method="marketing">Apply: marketing</a>
+          <a className="btn btn-primary" href={applyHref('Software Development Intern')} data-track="internship_apply" data-track-role="software">Apply: software</a>
+          <a className="btn btn-ghost" href={applyHref('Marketing and Business Development Intern')} data-track="internship_apply" data-track-role="marketing">Apply: marketing</a>
         </div>
         <p>You can also apply through the <a href="https://internship.aicte-india.org/" target="_blank" rel="noopener noreferrer">AICTE National Internship Portal</a>.</p>
       </section>
