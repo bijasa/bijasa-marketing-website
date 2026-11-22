@@ -30,7 +30,7 @@ const structuredData = {
       dateModified: post.date,
       image: `https://bijasa.com${post.image}`,
       mainEntityOfPage: url,
-      author: { '@type': 'Person', name: post.author.name, jobTitle: 'Founder and CEO', worksFor: { '@id': 'https://bijasa.com/#organization' } },
+      author: { '@type': 'Person', name: post.author.name, jobTitle: 'Founder', worksFor: { '@id': 'https://bijasa.com/#organization' } },
       publisher: { '@id': 'https://bijasa.com/#organization' },
     },
     {

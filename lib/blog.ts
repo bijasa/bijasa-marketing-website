@@ -9,14 +9,14 @@ export type Post = {
   image: string;
 };
 
-export const HETAL = { name: 'Hetal Pawar', role: 'Founder and CEO, Bijasa' };
+export const HETAL = { name: 'Hetal Pawar', role: 'Founder, Bijasa' };
 
 export const posts: Post[] = [
   {
     slug: 'how-we-build',
     title: 'Most software fails before the first line of code. Here is how we build instead.',
     description: 'Why software projects go wrong early, the six rules Bijasa follows on every project, and seven questions to ask any software team before you hire them.',
-    date: '2026-11-24',
+    date: '2026-11-22',
     author: HETAL,
     readMinutes: 7,
     image: '/og-how-we-build.png',
