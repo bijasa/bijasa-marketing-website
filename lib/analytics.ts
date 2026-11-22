@@ -14,6 +14,8 @@ const routes: Record<string, string> = {
   '/services/cloud-platforms-devops': 'Cloud platforms and DevOps',
   '/services/data-engineering-ai': 'Data engineering and AI',
   '/products': 'Products',
+  '/blog': 'Blog',
+  '/blog/how-we-build': 'How we build article',
   '/careers': 'Careers',
   '/careers/internships': 'Internships',
   '/work': 'Product case studies',
@@ -32,7 +34,7 @@ const rules: Record<string, Record<string, readonly string[]>> = {
   tool_open: { tool: ['invoicing', 'typing'] },
   case_study_open: { case_study: STUDY_IDS },
   case_study_view: { case_study: STUDY_IDS },
-  enquiry_cta_click: { entry_point: ['home', 'services', 'tools', 'case_study', 'products', 'careers', 'other'] },
+  enquiry_cta_click: { entry_point: ['home', 'services', 'tools', 'case_study', 'products', 'careers', 'blog', 'other'] },
   internship_link: { placement: ['home_hero', 'home_build', 'careers_page', 'other_page'] },
   internship_apply: { role: ['software', 'marketing'] },
   contact_start: {}, contact_form_ready: {},
@@ -255,7 +257,8 @@ export function trackLink(href: string) {
   if (path === '/' && url.hash === '#contact') {
     const entry = current === '/' ? 'home' : current.startsWith('/work/') ? 'case_study'
       : current.startsWith('/services') ? 'services' : current === '/tools' ? 'tools'
-      : current === '/products' ? 'products' : current.startsWith('/careers') ? 'careers' : 'other';
+      : current === '/products' ? 'products' : current.startsWith('/careers') ? 'careers'
+      : current.startsWith('/blog') ? 'blog' : 'other';
     track('enquiry_cta_click', { entry_point: entry });
   }
 }

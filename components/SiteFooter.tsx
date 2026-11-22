@@ -11,7 +11,7 @@ export default function SiteFooter() {
    <p className="footer-line">Deep roots. Long reach.<br/><span>Custom software, built from the roots up.</span></p>
   </div>
   <div className="container footer-mid">
-   <div><h2>Company</h2><a href="/#philosophy">Philosophy</a><a href="/#sectors">Sectors</a><a href="/#process">How we work</a><a href="/careers/">Careers</a><a href="/careers/internships/">Internships</a></div>
+   <div><h2>Company</h2><a href="/#philosophy">Philosophy</a><a href="/#sectors">Sectors</a><a href="/#process">How we work</a><a href="/blog/">Blog</a><a href="/careers/">Careers</a><a href="/careers/internships/">Internships</a></div>
    <div><h2>Work</h2><a href="/services/">Services</a><a href="/products/">Products</a><a href="/work/">Case studies</a><a href="/tools/">Free tools</a></div>
    <div><h2>Contact</h2><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a><SocialLinks/></div>
   </div>
