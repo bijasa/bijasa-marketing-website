@@ -12,7 +12,7 @@ const roles = [
   {
     id: 'software-development-intern',
     title: 'Software Development Intern',
-    seats: 'Most of the 10 seats',
+    seats: 'Most of the 5 seats',
     who: 'Students of computer science, IT, electronics or any branch who already write some code.',
     work: [
       'Build and test features for web and mobile apps with React, Next.js, Node.js and TypeScript.',
@@ -26,7 +26,7 @@ const roles = [
   {
     id: 'marketing-business-development-intern',
     title: 'Marketing and Business Development Intern',
-    seats: 'A few seats',
+    seats: 'One or two seats',
     who: 'Students of management, commerce, mass media or any branch who write clearly and like talking to people.',
     work: [
       'Plan and write content for LinkedIn, social media and the company website.',
